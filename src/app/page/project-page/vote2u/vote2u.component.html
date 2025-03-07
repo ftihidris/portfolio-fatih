@@ -1,0 +1,158 @@
+<div
+  class="grid grid-cols-1 md:grid-cols-5 auto-rows-auto gap-4 xl:gap-6 w-full md:mb-0 mb-4"
+>
+  <div class="row-span-3 h-full md:col-span-1">
+    <div class="h-full grid grid-cols-1 auto-row-auto gap-4 xl:gap-6">
+      <div
+        @fadeInAnimation
+        class="bg-gray-600 shadow-lg border border-gray-500 border-opacity-50 rounded-lg rounded-br-7xl rounded-tl-7xl backdrop-filter backdrop-blur-md bg-opacity-20 p-4 flex justify-center items-center"
+      >
+        <img
+          src="https://firebasestorage.googleapis.com/v0/b/portfolio-website-6d701.firebasestorage.app/o/logo%2Fvote2u.svg?alt=media&token=14c5177c-af94-4bf9-ae47-2a974523488d"
+          class="w-28 h-28 object-contain m-4"
+          alt="Vote2u Logo"
+        />
+      </div>
+      <div
+        @fadeInAnimation
+        class="h-full bg-gray-600 shadow-lg border border-gray-500 border-opacity-50 rounded-lg rounded-tr-7xl backdrop-filter backdrop-blur-md bg-opacity-20 p-4"
+      >
+        <span class="block text-gray-200 text-lg mb-4 text-left leading-none">
+          Notes
+        </span>
+        <div class="grid grid-cols-1 gap-3 w-full">
+          <ng-container *ngFor="let card of vote2uNotes">
+            <div class="relative group w-full justify-start">
+              <span
+                [ngClass]="card.color"
+                class="rounded-l-3xl rounded-r-7xl shadow-lg flex items-center text-white text-sm px-4 py-3 transition duration-300 hover:scale-105 w-full"
+              >
+                <div class="flex flex-col flex-grow w-0 min-w-0 text-left">
+                  <span
+                    class="text-xs opacity-80 block overflow-hidden w-full max-w-full"
+                  >
+                    {{ card.title }}
+                  </span>
+                  <span
+                    class="font-semibold block overflow-hidden w-full max-w-full"
+                  >
+                    {{ card.name }}
+                  </span>
+                </div>
+              </span>
+            </div>
+          </ng-container>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div
+    @fadeInAnimation
+    class="overflow-hidden col-span-1 md:col-span-2 row-span-2 md:col-start-2 md:row-start-1 bg-gray-600 shadow-lg border border-gray-500 border-opacity-50 rounded-lg rounded-bl-7xl backdrop-filter backdrop-blur-md bg-opacity-20"
+  >
+    <div
+      #carouselContainer
+      class="relative flex w-full h-full transition-transform duration-300 ease-in-out"
+    >
+      <img
+        src="https://firebasestorage.googleapis.com/v0/b/portfolio-website-6d701.firebasestorage.app/o/vote2u%2Fvote2u-1.webp?alt=media&token=747ad6a0-3979-4e83-a84b-6800b3e70ce0"
+        class="h-full w-full p-3 object-cover"
+        loading="lazy"
+        alt="Camelia"
+      />
+    </div>
+  </div>
+
+  <div
+    @fadeInAnimation
+    class="col-span-1 md:col-span-2 md:col-start-2 md:row-start-3 bg-gray-600 shadow-lg border border-gray-500 border-opacity-50 rounded-lg rounded-tl-7xl backdrop-filter backdrop-blur-md bg-opacity-20 p-4 flex flex-col items-end"
+  >
+    <span class="block text-gray-200 text-lg mb-4 text-left leading-none">
+      Skills
+    </span>
+    <div
+      class="flex flex-wrap justify-end gap-3 w-full transition-all duration-500"
+    >
+      <ng-container *ngFor="let icon of vote2uSkill">
+        <div class="relative group">
+          <div
+            class="absolute -top-11 left-1/2 transform -translate-x-1/2 px-3 py-2 text-xs font-light text-white text-center rounded-lg bg-gray-500/85 opacity-0 transition-opacity duration-300 group-hover:opacity-100 pointer-events-none"
+          >
+            {{ icon.level }} <br />
+          </div>
+          <span
+            [ngClass]="icon.color"
+            class="rounded-full shadow-lg flex justify-center items-center text-white text-sm cursor-pointer px-5 py-1.5 transition duration-300 hover:scale-110 active:opacity-80"
+          >
+            {{ icon.name }}
+          </span>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+
+  <div
+    @fadeInAnimation
+    class="relative col-span-1 md:col-span-2 row-span-3 md:col-start-4 md:row-start-1 bg-gray-600 shadow-lg border border-gray-500 border-opacity-50 rounded-lg rounded-br-7xl backdrop-filter backdrop-blur-md bg-opacity-20 p-4"
+  >
+    <!-- Buttons positioned at the top right -->
+    <div class="absolute top-3 right-4 flex gap-3">
+      <div class="relative group">
+        <div
+          class="absolute -top-10 left-1/2 whitespace-nowrap transform -translate-x-1/2 px-3 py-2 text-xs font-light text-white text-center rounded-lg bg-gray-500/85 opacity-0 transition-opacity duration-300 group-hover:opacity-100 pointer-events-none"
+        >
+          View poster <br />
+        </div>
+        <span
+          class="rounded-full bg-orange-500/50 shadow-lg flex justify-center items-center text-white text-xs cursor-pointer px-5 py-1.5 transition duration-300 hover:scale-110 active:opacity-80"
+          onclick="window.open('https://firebasestorage.googleapis.com/v0/b/portfolio-website-6d701.firebasestorage.app/o/vote2u%2FPoster-Vote2U.pdf?alt=media&token=9274628a-fbd4-4d9a-bdff-5187f17b9f40', '_blank')"
+        >
+          Poster
+        </span>
+      </div>
+      <div class="relative group">
+        <div
+          class="absolute -top-10 left-1/2 whitespace-nowrap transform -translate-x-1/2 px-3 py-2 text-xs font-light text-white text-center rounded-lg bg-gray-500/85 opacity-0 transition-opacity duration-300 group-hover:opacity-100 pointer-events-none"
+        >
+          View Figma <br />
+        </div>
+        <span
+          class="rounded-full bg-blue-500/50 shadow-lg flex justify-center items-center text-white text-xs cursor-pointer px-5 py-1.5 transition duration-300 hover:scale-110 active:opacity-80"
+          onclick="window.open('https://www.figma.com/design/VmyHSIgs21VvofaFHuo9b5/Vote2U', '_blank')"
+        >
+          Figma Board
+        </span>
+      </div>
+    </div>
+
+    <!-- Description and content -->
+    <span class="block text-gray-200 text-lg mb-4 text-left leading-none">
+      Description
+    </span>
+    <p class="text-left mb-3">
+      Mobile Voting System Based on Blockchain Powered by Cryptography
+      Algorithm. Vote2U application lies In its innovative combination of
+      blockchain technology, cryptographic algorithms, and a user-friendly
+      mobile application to create a secure and transparent voting system.
+      Unlike current voting systems, Vote2U leverages the decentralized and
+      immutable nature of blockchain to ensure the integrity and transparency of
+      election processes.
+    </p>
+    <ul class="list-disc list-outside pl-4 mb-4">
+      <li class="mb-2">
+        Designing UI/UX using figma to enhance user engagement and simplifying
+        navigation.
+      </li>
+      <li class="mb-2">
+        Developed a mobile application (Android & iOS) in Flutter for a voting
+        system powered by blockchain technology and cryptographic algorithms
+        (SHA256) with Solidity language.
+      </li>
+      <li class="">
+        Succeed in integrating smart contract (Solidity) with Flutter
+        application by using Web3Dart package.
+      </li>
+    </ul>
+  </div>
+</div>

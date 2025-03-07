@@ -1,0 +1,86 @@
+input[type="text"],
+[type="email"],
+[type="tel"],
+textarea {
+  resize: vertical;
+}
+
+.input-group {
+  position: relative;
+}
+
+.input-group label {
+  position: absolute;
+  top: 50%;
+  left: 15px;
+  transform: translateY(-50%);
+
+  font-style: italic;
+  @apply text-gray-400;
+
+  pointer-events: none;
+  transition: 0.5s;
+}
+
+// i. Following the design, show focus effect on text fields with a short transition.
+.input-group input:focus,
+textarea:focus {
+  @apply border-blue-600;
+  outline: none;
+}
+
+// ii. Following the design, move placeholder text up when fields are filled, with a smooth transition.
+.input-group input:focus ~ label,
+.textarea-group textarea:focus ~ label {
+  top: 0;
+  @apply text-sm;
+  @apply text-gray-200;
+  text-shadow: -1px -1px 0 rgb(37 99 235), 1px -1px 0 rgb(37 99 235),
+    -1px 1px 0 rgb(37 99 235), 1px 1px 0 rgb(37 99 235);
+}
+.input-group input.ng-dirty ~ label,
+.textarea-group textarea.ng-dirty ~ label {
+  top: 0;
+  @apply text-sm;
+  @apply text-gray-300;
+}
+.input-group input.ng-dirty:invalid,
+.textarea-group textarea.ng-dirty:invalid {
+  @apply border-red-600;
+}
+
+.input-group input.ng-dirty:invalid ~ label,
+.textarea-group textarea.ng-dirty:invalid ~ label {
+  @apply border-red-600;
+  text-shadow: -1px -1px 0 rgb(239 68 68), 1px -1px 0 rgb(239 68 68),
+    -1px 1px 0 rgb(239 68 68), 1px 1px 0 rgb(239 68 68);
+}
+
+// ii. Following the design, move placeholder text up when fields are filled, with a smooth transition.
+.input-group input.ng-dirty ~ label {
+  top: 0;
+  @apply text-sm;
+  @apply text-gray-300;
+}
+
+.textarea-group {
+  position: relative;
+}
+
+.textarea-group label {
+  position: absolute;
+  top: 30px;
+  left: 15px;
+  transform: translateY(-50%);
+  font-size: 16px;
+
+  font-style: italic;
+  @apply text-gray-400;
+
+  pointer-events: none;
+  transition: 0.5s;
+}
+
+.textarea-group input {
+  outline: none;
+}

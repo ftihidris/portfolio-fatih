@@ -1,0 +1,64 @@
+<div
+  class="relative top-32 md:top-20 min-h-[calc(100vh-4rem)] max-w-screen-xl w-full mx-auto px-4 flex flex-col items-center"
+>
+  <!-- Toggle Buttons Container -->
+  <app-toggle-button
+    [options]="rows"
+    [selectedOption]="selectedOption"
+    (selectionChange)="onSelectionChange($event)"
+  ></app-toggle-button>
+
+  <div [ngSwitch]="selectedOption">
+    <div *ngSwitchCase="'About Me'">
+      <app-about-me></app-about-me>
+    </div>
+    <div *ngSwitchCase="'Certificates'">
+      <app-certificates></app-certificates>
+    </div>
+    <div *ngSwitchCase="'Participation'">
+      <app-achievements></app-achievements>
+    </div>
+    <div *ngSwitchDefault>
+      <app-about-me></app-about-me>
+    </div>
+  </div>
+</div>
+
+<!-- <div class="h-full w-full">
+    <div class="absolute z-20 justify-start">
+      <h1 class="text-7xl font-semibold leading-tight text-gray-200">
+        I'm really love to <br />
+        build apps that <br />matter.
+      </h1>
+      <p class="mt-4 text-lg text-gray-300">
+        Let’s create something amazing together.
+      </p>
+    </div>
+    <div class="w-full relative flex justify-end">
+      <img
+        src="assets/fatih-2.png"
+        alt="Fatih Idris"
+        class="max-h-[25rem] rounded-lg relative z-10"
+      />
+    </div>
+    <span class="block text-gray-200 text-lg mb-4 text-left leading-none"
+      >About me</span
+    >
+    <p class="mt-2 text-gray-300 text-justify">
+      A passionate Mobile Computing graduate from UiTM Kuala Terengganu,
+      specializing in mobile and web development. My journey started as a
+      restaurant crew, where I built resilience and strong time management
+      skills—qualities that continue to drive my growth in the tech industry. I
+      recently completed my internship as a Front-End Developer at TM Research
+      and Development, where I focused on UI/UX design and website development.
+      Additionally, I have 3+ years of experience as a freelance graphic
+      designer in the sublimation industry, specializing in vector graphics
+      using Adobe Illustrator and Vectornator. My design expertise was
+      recognized when I won the UKM T-Shirt Design Competition, further
+      solidifying my skills in branding and visual storytelling. Now, I’m eager
+      to expand my expertise in mobile and web development, actively seeking
+      opportunities to gain hands-on experience in real-world industry settings.
+      Passionate about creativity and technology, I aim to leverage my diverse
+      skill set to contribute to innovative and impactful projects.
+    </p>
+  </div> -->

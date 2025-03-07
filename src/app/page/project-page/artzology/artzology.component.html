@@ -1,0 +1,166 @@
+<div
+  class="grid grid-cols-1 md:grid-cols-5 auto-rows-auto gap-4 xl:gap-6 w-full md:mb-0 mb-4"
+>
+  <div class="row-span-3 h-full md:col-span-1">
+    <div class="h-full grid grid-cols-1 auto-row-auto gap-4 xl:gap-6">
+      <div
+        @fadeInAnimation
+        class="bg-gray-600 shadow-lg border border-gray-500 border-opacity-50 rounded-lg rounded-br-7xl rounded-tl-7xl backdrop-filter backdrop-blur-md bg-opacity-20 p-4 flex justify-center items-center"
+      >
+        <img
+          src="https://firebasestorage.googleapis.com/v0/b/portfolio-website-6d701.firebasestorage.app/o/logo%2Fartz-logo.svg?alt=media&token=89480430-cf5d-417d-b478-3d0683b7448c"
+          class="w-28 h-28 object-contain m-4"
+          alt="Artzology Logo"
+        />
+      </div>
+      <div
+        @fadeInAnimation
+        class="h-full bg-gray-600 shadow-lg border border-gray-500 border-opacity-50 rounded-lg rounded-tr-7xl backdrop-filter backdrop-blur-md bg-opacity-20 p-4"
+      >
+        <span class="block text-gray-200 text-lg mb-4 text-left leading-none">
+          Notes
+        </span>
+        <div class="grid grid-cols-1 gap-3 w-full">
+          <ng-container *ngFor="let card of artzNotes">
+            <div class="relative group w-full justify-start">
+              <span
+                [ngClass]="card.color"
+                class="rounded-l-3xl rounded-r-7xl shadow-lg flex items-center text-white text-sm px-4 py-3 transition duration-300 hover:scale-105 w-full"
+              >
+                <div class="flex flex-col flex-grow w-0 min-w-0 text-left">
+                  <span
+                    class="text-xs opacity-80 block overflow-hidden w-full max-w-full"
+                  >
+                    {{ card.title }}
+                  </span>
+                  <span
+                    class="font-semibold block overflow-hidden w-full max-w-full"
+                  >
+                    {{ card.name }}
+                  </span>
+                </div>
+              </span>
+            </div>
+          </ng-container>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div
+    @fadeInAnimation
+    class="overflow-hidden col-span-1 md:col-span-2 row-span-2 md:col-start-2 md:row-start-1 bg-gray-600 shadow-lg border border-gray-500 border-opacity-50 rounded-lg rounded-bl-7xl backdrop-filter backdrop-blur-md bg-opacity-20"
+  >
+    <div
+      #carouselContainer
+      aria-describedby="More snapshots"
+      class="relative flex w-full h-full transition-transform duration-300 ease-in-out"
+    >
+      <img
+        *ngFor="let image of images"
+        [src]="image"
+        class="h-full w-full object-cover"
+        loading="lazy"
+        alt="Camelia"
+      />
+    </div>
+    <button
+      (click)="moveSlide(-1)"
+      class="absolute top-1/2 left-4 transform -translate-y-1/2 text-gray-500/70 py-2 px-4 rounded-full hover:bg-gray-400/30 transition-transform duration-300 ease-in-out"
+    >
+      &#10094;
+    </button>
+    <button
+      (click)="moveSlide(1)"
+      class="absolute top-1/2 right-4 transform -translate-y-1/2 text-gray-500/70 py-2 px-4 rounded-full hover:bg-gray-400/30 transition-transform duration-300 ease-in-out"
+    >
+      &#10095;
+    </button>
+    <div
+      class="absolute bottom-3 left-1/2 transform -translate-x-1/2 flex gap-2"
+    >
+      <span
+        *ngFor="let image of images; let i = index"
+        class="w-2 h-2 rounded-full"
+        [ngClass]="i === currentIndex ? 'bg-gray-100/70' : 'bg-gray-500/50 '"
+      ></span>
+    </div>
+  </div>
+
+  <div
+    @fadeInAnimation
+    class="col-span-1 md:col-span-2 md:col-start-2 md:row-start-3 bg-gray-600 shadow-lg border border-gray-500 border-opacity-50 rounded-lg rounded-tl-7xl backdrop-filter backdrop-blur-md bg-opacity-20 p-4 flex flex-col items-end"
+  >
+    <span class="block text-gray-200 text-lg mb-4 text-left leading-none">
+      Skills
+    </span>
+    <div
+      class="flex flex-wrap justify-end gap-3 w-full transition-all duration-500"
+    >
+      <ng-container *ngFor="let icon of artzSkill">
+        <div class="relative group">
+          <div
+            class="absolute -top-11 left-1/2 transform -translate-x-1/2 px-3 py-2 text-xs font-light text-white text-center rounded-lg bg-gray-500/85 opacity-0 transition-opacity duration-300 group-hover:opacity-100 pointer-events-none"
+          >
+            {{ icon.level }} <br />
+          </div>
+          <span
+            [ngClass]="icon.color"
+            class="rounded-full shadow-lg flex justify-center items-center text-white text-sm cursor-pointer px-5 py-1.5 transition duration-300 hover:scale-110 active:opacity-80"
+          >
+            {{ icon.name }}
+          </span>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+
+  <div
+    @fadeInAnimation
+    class="col-span-1 md:col-span-2 row-span-3 md:col-start-4 md:row-start-1 bg-gray-600 shadow-lg border border-gray-500 border-opacity-50 rounded-lg rounded-br-7xl backdrop-filter backdrop-blur-md bg-opacity-20 p-4"
+  >
+    <span class="block text-gray-200 text-lg mb-4 text-left leading-none">
+      Description
+    </span>
+    <div class="absolute top-3 right-4 flex gap-3">
+      <div class="relative group">
+        <div
+          class="absolute -top-10 left-1/2 whitespace-nowrap transform -translate-x-1/2 px-3 py-2 text-xs font-light text-white text-center rounded-lg bg-gray-500/85 opacity-0 transition-opacity duration-300 group-hover:opacity-100 pointer-events-none"
+        >
+          Visit IG <br />
+        </div>
+        <span
+          class="rounded-full bg-orange-500/50 shadow-lg flex justify-center items-center text-white text-xs cursor-pointer px-5 py-1.5 transition duration-300 hover:scale-110 active:opacity-80"
+          onclick="window.open('https://www.instagram.com/artzology_?igsh=MTF5Y3dwMDgwNGducQ==', '_blank')"
+        >
+          Instagram
+        </span>
+      </div>
+    </div>
+    <p class="text-left mb-3"></p>
+    <ul class="list-disc list-outside pl-4">
+      <li class="mb-2">
+        Designed and consulted my client for the University Edition Jersey
+        Campaign. Started with the design draft for jersey line up for 6 top
+        Universities in Malaysia including, UM, UKM, USM, UiTM, UIA and UTM.
+      </li>
+      <li class="mb-2">
+        Inspired design by using the campus maps topography to be as main
+        concept of the jersey like others international brand and one of the
+        first local brand to introduce the concept in university scale.
+      </li>
+      <li class="mb-2">
+        Planned the photoshoot theme and concept to match the client request and
+        idea.
+      </li>
+      <li class="mb-2">
+        Increased the sales by suggesting the client to create "MOREISLESS"
+        promotion to encourage customer to buy more in single order.
+      </li>
+      <li>
+        Enhanced customer experience by optimise purchase through website
+        (Yezza.store) that includes payment gateway (Billplz) for customers.
+      </li>
+    </ul>
+  </div>
+</div>

@@ -1,0 +1,182 @@
+<div
+  class="grid grid-cols-1 md:grid-cols-2 gap-4 xl:gap-6 w-full auto-rows-auto"
+>
+  <div class="grid grid-cols-1 auto-rows-auto gap-4 xl:gap-6 md:row-span-2">
+    <div
+      @fadeInAnimation
+      class="w-full bg-gray-600 shadow-lg border border-gray-500 border-opacity-50 rounded-lg rounded-br-7xl backdrop-filter backdrop-blur-md bg-opacity-20 p-4"
+    >
+      <span class="block text-gray-200 text-lg mb-3 text-left leading-none">
+        What's up!
+      </span>
+      <p class="mt-2 text-white text-left mb-3">
+        I recently completed my degree and internship as a Front-End Developer
+        at TM Research and Development, where I focused on UI/UX design and
+        website development. Additionally, I have 4+ years of experience as a
+        freelance graphic designer in the sublimation industry, specializing in
+        vector graphics using Adobe Illustrator and Vectornator. My design
+        expertise was recognized when I won the UKM T-Shirt Design Competition,
+        further solidifying my skills in branding and visual storytelling.
+      </p>
+
+      <p class="mt-2 text-white text-left">
+        Now, I’m eager to expand my expertise in mobile and web development,
+        actively seeking opportunities to gain hands-on experience in real-world
+        industry settings. Passionate about creativity and technology, I aim to
+        leverage my diverse skill set to contribute to innovative and impactful
+        projects.
+      </p>
+    </div>
+    <div
+      @fadeInAnimation
+      class="row-start-2 bg-gray-600 shadow-lg border border-gray-500 border-opacity-50 rounded-lg rounded-tr-7xl backdrop-filter backdrop-blur-md bg-opacity-20 p-4"
+    >
+      <span class="block text-gray-200 text-lg mb-4 text-left leading-none">
+        References
+      </span>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-3 w-full">
+        <ng-container *ngFor="let card of referenceCards">
+          <div class="relative group w-full justify-start">
+            <span
+              [ngClass]="card.color"
+              class="rounded-l-3xl rounded-r-7xl shadow-lg flex items-center text-white text-sm px-4 py-3 transition duration-300 hover:scale-105 w-full"
+            >
+              <!-- Text Section -->
+              <div class="flex flex-col flex-grow w-0 min-w-0 text-left">
+                <span
+                  class="font-semibold block overflow-hidden text-ellipsis whitespace-nowrap w-full max-w-full"
+                >
+                  {{ card.name }}
+                </span>
+                <span
+                  class="text-xs opacity-80 block overflow-hidden text-ellipsis whitespace-nowrap w-full max-w-full"
+                >
+                  {{ card.roles }}
+                </span>
+                <span
+                  class="text-xs opacity-80 block overflow-hidden text-ellipsis whitespace-nowrap w-full max-w-full"
+                >
+                  {{ card.relation }}
+                </span>
+                <div class="flex items-center gap-3">
+                  <!-- WhatsApp Icon -->
+                  <i
+                    alt="Open WhatsApp"
+                    class="pi pi-whatsapp text-lg cursor-pointer hover:text-green-400 active:text-green-500 transition duration-300"
+                    (click)="openWhatsApp(card.number)"
+                  ></i>
+
+                  <!-- Phone Number -->
+                  <i
+                    class="pi pi-phone text-lg cursor-pointer hover:text-blue-400 active:text-blue-500 transition duration-300"
+                    (click)="toggleVisibility(card, 'number')"
+                  ></i>
+                  <span
+                    *ngIf="card.showNumber"
+                    class="text-xs opacity-80 block overflow-hidden text-ellipsis whitespace-nowrap"
+                  >
+                    {{ card.number }}
+                  </span>
+
+                  <!-- Email Icon -->
+                  <i
+                    class="pi pi-envelope text-lg cursor-pointer hover:text-red-400 active:text-red-500 transition duration-300"
+                    (click)="toggleVisibility(card, 'email')"
+                  ></i>
+
+                  <!-- Email Address -->
+                  <span
+                    *ngIf="card.showEmail"
+                    class="text-xs opacity-80 block overflow-hidden text-ellipsis whitespace-nowrap"
+                  >
+                    {{ card.email }}
+                  </span>
+                </div>
+              </div>
+            </span>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+
+  <!-- Second Column - Image (Row 1) -->
+  <div
+    @fadeInAnimation
+    class="rounded-lg shadow-lg rounded-bl-7xl overflow-hidden border-gray-500 border-opacity-50 relative flex flex-col items-end"
+  >
+    <img
+      src="assets/images/fatih-2.webp"
+      loading="lazy"
+      alt="Fatih Idris"
+      fetchpriority="low"
+      class="h-full w-full object-cover"
+    />
+
+    <div class="absolute top-0 text-right right-0 z-20 p-6">
+      <h1 class="text-4xl font-semibold leading-tight text-white">
+        I really love to <br />
+        build apps that <br />matter!
+      </h1>
+      <p class="mt-2 text-lg text-gray-300/70">
+        Let’s create something<br />
+        amazing together.
+      </p>
+    </div>
+  </div>
+
+  <!-- Second Column - Bottom Section (Row 2) -->
+  <div
+    @fadeInAnimation
+    class="bg-gray-600 shadow-lg border border-gray-500 border-opacity-50 rounded-lg rounded-tl-7xl backdrop-filter backdrop-blur-md bg-opacity-20 p-4 flex flex-col items-end h-auto"
+  >
+    <span class="block text-gray-200 text-lg mb-4 leading-none"
+      >Experience</span
+    >
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-3 w-full">
+      <ng-container *ngFor="let card of experienceCards">
+        <div class="relative group w-full">
+          <span
+            [ngClass]="card.color"
+            class="rounded-r-3xl rounded-l-7xl shadow-lg flex items-center text-white text-sm cursor-pointer p-3 transition duration-300 hover:scale-105 active:opacity-80 w-full"
+          >
+            <!-- Icon Section -->
+            <div
+              [ngClass]="card.cardColor"
+              [class]="
+                ' w-14 h-14 rounded-full bg-opacity-80 flex justify-center items-center cursor-pointer p-3 transition duration-300  '
+              "
+            >
+              <span
+                class="material-symbols-outlined"
+                [ngClass]="card.iconColor"
+                [style.fontSize]="'1.5rem'"
+              >
+                {{ card.class }}
+              </span>
+            </div>
+
+            <!-- Text Section -->
+            <div class="flex flex-col flex-grow pl-2 w-0 min-w-0">
+              <span
+                class="font-semibold block overflow-hidden text-ellipsis whitespace-nowrap w-full max-w-full"
+              >
+                {{ card.experience }}
+              </span>
+              <span
+                class="text-xs opacity-80 block overflow-hidden text-ellipsis whitespace-nowrap w-full max-w-full"
+              >
+                {{ card.roles }}
+              </span>
+              <span
+                class="text-xs opacity-80 block overflow-hidden text-ellipsis whitespace-nowrap w-full max-w-full"
+              >
+                {{ card.when }}
+              </span>
+            </div>
+          </span>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+</div>

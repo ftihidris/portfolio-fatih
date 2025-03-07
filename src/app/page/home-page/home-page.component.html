@@ -1,0 +1,234 @@
+<div
+  class="relative top-24 md:top-20 max-w-screen-xl w-full min-h-[calc(100vh-5rem)] flex justify-center items-center mx-auto px-4"
+>
+  <div
+    @staggerSections
+    class="grid grid-cols-1 md:grid-cols-8 auto-rows-auto gap-4 xl:gap-6 w-full sm:mt-0 mt-32"
+  >
+    <!-- Profile Section -->
+    <div
+      @staggerElements
+      class="custom-rounded shadow-lg relative col-span-1 md:col-span-3 md:row-span-4 h-full w-full bg-gray-600 border border-gray-500 border-opacity-50 backdrop-filter backdrop-blur-md bg-opacity-20 flex justify-center items-center aspect-square"
+    >
+      <div
+        class="relative shadow-lg rounded-full flex justify-center items-center w-[80%] h-[80%] aspect-square"
+      >
+        <span
+          class="absolute w-[90%] h-[90%] rounded-full z-10"
+          [ngStyle]="{
+            background:
+              'linear-gradient(' +
+              rotationAngle +
+              'deg, rgba(255, 255, 255,0)40%, rgba(79, 80, 229, 0.8)100%)'
+          }"
+        ></span>
+        <span
+          class="absolute w-full h-full border border-gray-500 rounded-full z-0"
+        ></span>
+        <img
+          src="assets/images/fatih.webp"
+          loading="lazy"
+          fetchpriority="high"
+          alt="Fatih Idris"
+          class="absolute w-[90%] h-[90%] rounded-full z-20 object-cover transition-all duration-300 hover:w-[100%] hover:h-[100%]"
+        />
+      </div>
+      <h1 class="absolute bottom-3 left-4 text-gray-200 md:text-xl">
+        I'm a Mobile<br />
+        & Web Developer!
+      </h1>
+    </div>
+
+    <!-- Contact Me Section -->
+    <div
+      @staggerElements
+      class="relative shadow-lg col-span-1 md:col-span-3 bg-gray-600 border border-gray-500 border-opacity-50 rounded-lg rounded-br-7xl backdrop-filter backdrop-blur-md bg-opacity-20 p-4"
+    >
+      <!-- Top Left Title -->
+      <span
+        class="block text-gray-200 text-lg md:mb-4 mb-7 text-left leading-none"
+        >Contact Me</span
+      >
+      <!-- Icons Container (Centered Right) -->
+      <div
+        class="absolute top-1/2 right-10 transform -translate-y-1/2 flex space-x-2 rtl:space-x-reverse transition-all duration-500"
+      >
+        <div *ngFor="let icon of iconsContact" class="relative group">
+          <!-- Tooltip -->
+          <div
+            class="absolute -top-11 left-1/2 transform -translate-x-1/2 px-3 py-2 text-xs font-light text-white bg-gray-600/30 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 dark:bg-gray-500/80"
+          >
+            {{ icon.name }}
+          </div>
+
+          <!-- Clickable Icon Button -->
+          <button
+            (click)="icon.action()"
+            [ngClass]="icon.color"
+            [attr.aria-label]="icon.ariaLabel"
+            [class]="
+              icon.class +
+              ' w-14 h-14 shadow-lg rounded-full bg-opacity-80 flex justify-center items-center cursor-pointer p-3 transition duration-300 hover:scale-110 active:opacity-80  '
+            "
+            style="color: white; font-size: 1.3rem"
+          ></button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Status Section -->
+    <div
+      @staggerElements
+      class="relative shadow-lg col-span-1 md:col-span-2 bg-gray-600 border border-gray-500 border-opacity-50 rounded-lg rounded-bl-7xl backdrop-filter backdrop-blur-md bg-opacity-20 p-4 flex flex-col items-end"
+    >
+      <span class="block text-gray-200 mb-3 text-lg leading-none">Status</span>
+      <span class="block text-white text-end text-2xl leading-none"
+        >Fresh Graduate</span
+      >
+    </div>
+
+    <!-- Summary Section -->
+    <div
+      @staggerElements
+      class="relative shadow-lg col-span-1 md:col-span-2 md:row-span-3 bg-gray-600 border border-gray-500 border-opacity-50 rounded-lg rounded-tr-7xl backdrop-filter backdrop-blur-md bg-opacity-20 p-4"
+    >
+      <span class="block text-gray-200 text-lg mb-4 leading-none">Summary</span>
+      <div class="grid grid-cols-1 gap-3 w-ful">
+        <ng-container *ngFor="let card of aboutCards">
+          <div class="relative group w-full">
+            <span
+              [ngClass]="card.color"
+              class="rounded-l-3xl rounded-r-7xl flex items-center text-white text-sm shadow-lg cursor-pointer py-3 px-4 transition duration-300 hover:scale-105 active:opacity-80 w-full"
+            >
+              <!-- Text Section -->
+              <div class="flex flex-col flex-grow w-0 min-w-0">
+                <span
+                  class="font-semibold block overflow-hidden text-ellipsis whitespace-nowrap w-full max-w-full"
+                >
+                  {{ card.about }}
+                </span>
+                <span
+                  class="text-xs opacity-80 block overflow-hidden text-ellipsis whitespace-nowrap w-full max-w-full"
+                >
+                  {{ card.roles }}
+                </span>
+                <span
+                  class="text-xs opacity-80 block overflow-hidden text-ellipsis whitespace-nowrap w-full max-w-full"
+                >
+                  {{ card.notes }}
+                </span>
+                <span
+                  class="text-xs opacity-80 block overflow-hidden text-ellipsis whitespace-nowrap w-full max-w-full"
+                >
+                  {{ card.when }}
+                </span>
+              </div>
+              <!-- Icon Section -->
+              <div
+                [ngClass]="card.iconColor"
+                class="w-14 h-14 ml-2 rounded-full flex justify-center items-center shrink-0"
+              >
+                <img
+                  [src]="card.icon"
+                  [attr.alt]="card.alt"
+                  class="w-3/5 h-3/5 object-contain"
+                />
+              </div>
+            </span>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+
+    <!-- Skills Section -->
+    <div
+      @staggerElements
+      class="relative shadow-md col-span-1 md:col-span-3 md:row-span-3 bg-gray-600 border border-gray-500 border-opacity-50 rounded-lg rounded-tl-7xl backdrop-filter backdrop-blur-md bg-opacity-20 p-4 flex flex-col items-end min-h-[100px] h-auto"
+    >
+      <span class="block text-gray-200 text-lg mb-4 leading-none">Skills</span>
+
+      <div
+        class="flex flex-wrap justify-end gap-3 w-full transition-all duration-500"
+      >
+        <ng-container *ngFor="let icon of iconsSkill">
+          <div class="relative group">
+            <!-- Tooltip -->
+            <div
+              class="absolute -top-11 left-1/2 transform -translate-x-1/2 px-3 py-2 text-xs font-light text-white text-center rounded-lg bg-gray-500/85 opacity-0 transition-opacity duration-300 group-hover:opacity-100 pointer-events-none"
+            >
+              {{ icon.level }} <br />
+            </div>
+
+            <!-- Tag -->
+            <span
+              [ngClass]="icon.color"
+              class="rounded-full shadow-lg flex justify-center items-center text-white text-sm cursor-pointer px-5 py-1.5 transition duration-300 hover:scale-110 active:opacity-80"
+            >
+              {{ icon.name }}
+            </span>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 
+    <span
+      class="absolute mx-auto py-4 flex border w-fit bg-gradient-to-r blur-md from-blue-500 via-teal-500 to-red-500 bg-clip-text text-6xl box-content font-extrabold text-transparent text-center select-none"
+    >
+      Fatih Idris
+    </span>
+    <h1
+      class="relative top-0 w-fit h-auto py-4 justify-center flex bg-gradient-to-r items-center text-6xl font-extrabold text-black text-center select-auto"
+    >
+      Fatih Idris
+    </h1>
+   <h1
+    class="relative top-0 w-fit h-auto py-4 justify-center flex bg-gradient-to-r items-center from-blue-500 via-teal-500 to-red-500 bg-clip-text text-6xl font-extrabold text-transparent text-center select-auto"
+  >
+    Fatih Idris
+  </h1>
+    <h2>
+      Web Developer | Mobile Developer | UI/UX Designer | Graphic Designer
+    </h2>
+    <p>home-page works!</p>
+  </div>  -->
+
+<!-- <div class="grid md:grid-cols-1 grid-cols-2 gap-3 w-full">
+      <ng-container *ngFor="let card of projectCards">
+        <div class="relative group w-full">
+          <span
+            [ngClass]="card.color"
+            class="rounded-full shadow-lg flex items-center text-white text-sm cursor-pointer p-3 transition duration-300 hover:scale-105 active:opacity-80 w-full"
+          >
+Icon Section 
+            <div
+              [ngClass]="card.iconColor"
+              class="w-12 h-12 rounded-full flex justify-center items-center shrink-0"
+            >
+              <img src="{{ card.icon }}" class="w-3/5 h-3/5 object-contain" />
+            </div>
+
+Text Section 
+            <div class="flex flex-col flex-grow pl-2 w-0 min-w-0">
+              <span
+                class="font-semibold block overflow-hidden text-ellipsis whitespace-nowrap w-full max-w-full"
+              >
+                {{ card.name }}
+              </span>
+              <span
+                class="text-xs opacity-80 block overflow-hidden text-ellipsis whitespace-nowrap w-full max-w-full"
+              >
+                {{ card.roles }}
+              </span>
+              <span
+                class="text-xs opacity-80 block overflow-hidden text-ellipsis whitespace-nowrap w-full max-w-full"
+              >
+                {{ card.when }}
+              </span>
+            </div>
+          </span>
+        </div>
+      </ng-container>
+    </div> -->

@@ -1,0 +1,142 @@
+<div
+  class="relative top-32 md:top-0 min-h-[calc(100vh-4rem)] max-w-screen-xl w-full mx-auto flex justify-center items-center p-4"
+>
+  <div
+    class="grid grid-cols-1 md:grid-cols-3 auto-rows-auto gap-4 xl:gap-6 w-full"
+  >
+    <div>
+      <div
+        class="w-full bg-gray-600 border rounded-lg border-gray-500 border-opacity-50 backdrop-filter backdrop-blur-md bg-opacity-20 p-4"
+      >
+        <span class="block text-gray-200 text-lg mb-4 text-left leading-none">
+          Connect with Me
+        </span>
+
+        <div class="flex items-center gap-x-4">
+          <div *ngFor="let icon of iconsContact" class="relative group">
+            <!-- Tooltip -->
+            <div
+              class="absolute -top-11 left-1/2 transform -translate-x-1/2 px-3 py-2 text-xs font-light text-white bg-gray-600/30 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 dark:bg-gray-500/80"
+            >
+              {{ icon.name }}
+            </div>
+
+            <!-- Clickable Icon Button -->
+            <button
+              (click)="icon.action()"
+              [ngClass]="icon.color"
+              [attr.aria-label]="icon.ariaLabel"
+              [class]="
+                icon.class +
+                ' w-14 h-14 shadow-lg rounded-full bg-opacity-80 flex justify-center items-center cursor-pointer p-3 transition duration-300 hover:scale-110 active:opacity-80'
+              "
+              style="color: white; font-size: 1.3rem"
+            ></button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="md:col-span-2 w-full bg-gray-600 border p-4 rounded-lg border-gray-500 border-opacity-50 backdrop-filter backdrop-blur-md bg-opacity-20"
+    >
+      <span class="block text-gray-200 text-lg mb-4 text-left leading-none">
+        Get in Touch
+      </span>
+      <form
+        #contactForm="ngForm"
+        (ngSubmit)="onSubmit(contactForm)"
+        novalidate
+        autocomplete="on"
+      >
+        <div
+          class="grid grid-cols-1 sm:grid-cols-3 auto-rows-auto gap-4 w-full"
+        >
+          <div class="input-group">
+            <input
+              type="text"
+              id="name"
+              name="name"
+              ngModel
+              required
+              pattern="^[a-zA-Z ]+$"
+              #name="ngModel"
+              aria-describedby="nameHelp"
+              autocomplete="name"
+              (input)="onInputChange()"
+              class="h-full w-full bg-gray-600/30 border p-3 rounded-lg border-gray-500 border-opacity-50"
+            />
+            <label for="name">Name</label>
+          </div>
+          <div class="input-group">
+            <input
+              type="email"
+              id="email"
+              name="email"
+              ngModel
+              required
+              email
+              autocomplete="email"
+              (input)="onInputChange()"
+              #email="ngModel"
+              aria-describedby="emailHelp"
+              class="h-full w-full bg-gray-600/30 border p-3 rounded-lg border-gray-500 border-opacity-50"
+            />
+            <label for="email">Email address</label>
+          </div>
+          <div class="input-group">
+            <input
+              type="tel"
+              id="tel"
+              name="tel"
+              ngModel
+              required
+              pattern="^[0-9]{10,12}$"
+              #tel="ngModel"
+              autocomplete="tel"
+              (input)="onInputChange()"
+              aria-describedby="contactHelp"
+              class="h-full w-full bg-gray-600/30 border p-3 rounded-lg border-gray-500 border-opacity-50"
+            />
+
+            <label for="tel">Contact no.</label>
+          </div>
+          <div class="sm:col-span-3 sm:row-start-2 textarea-group">
+            <textarea
+              id="message"
+              name="message"
+              rows="4"
+              ngModel
+              required
+              #message="ngModel"
+              autocomplete="off"
+              aria-describedby="messageHelp"
+              class="h-full w-full bg-gray-600/30 border p-3 rounded-lg border-gray-500 border-opacity-50"
+            ></textarea>
+            <label for="message">How can I help?</label>
+          </div>
+        </div>
+
+        <div class="flex justify-end gap-4 mt-4">
+          <!-- Clear Button -->
+          <button
+            type="button"
+            (click)="clearForm(contactForm)"
+            [disabled]="!contactForm.dirty"
+            class="px-6 py-2 text-white bg-yellow-600/70 rounded-full transition duration-300 ease-in-out active:bg-yellow-600/50 disabled:bg-gray-400/50 disabled:cursor-not-allowed"
+          >
+            Clear
+          </button>
+
+          <!-- Submit Button -->
+          <button
+            type="submit"
+            [disabled]="!contactForm.valid"
+            class="px-6 py-2 text-white bg-blue-600/70 rounded-full transition duration-300 ease-in-out active:bg-blue-600/50 disabled:bg-blue-400/50 disabled:cursor-not-allowed"
+          >
+            Send Message
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

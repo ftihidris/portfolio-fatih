@@ -1,0 +1,29 @@
+<div class="">
+  <div
+    class="grid grid-cols-2 lg:grid-cols-3 md:grid-cols-2 gap-4 xl:gap-6 w-full"
+  >
+    <ng-container *ngFor="let card of certsCards; let i = index">
+      <div
+        @fadeInAnimation
+        class="relative group rounded-lg cursor-pointer shadow-lg w-full bg-gray-600 border border-gray-500 border-opacity-50 backdrop-filter backdrop-blur-md bg-opacity-20 flex justify-center items-center transition duration-300 hover:scale-105 active:opacity-80"
+        (click)="openLink(card.url)"
+      >
+        <div class="w-full h-full p-4 relative">
+          <!-- Skeleton Loader -->
+          <span
+            class="block text-gray-200 text-lg mb-4 text-left overflow-hidden text-ellipsis whitespace-nowrap leading-none max-w-full"
+          >
+            {{ card.name }}
+          </span>
+          <!-- Image -->
+          <img
+            [src]="card.src"
+            loading="lazy"
+            [attr.alt]="card.alt"
+            class="w-full max-h-72 object-cover rounded-lg md:rounded-tr-7xl md:rounded-bl-7xl overflow-hidden shadow-lg"
+          />
+        </div>
+      </div>
+    </ng-container>
+  </div>
+</div>
