@@ -1,6 +1,7 @@
-import { ChangeDetectorRef, Component } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { environment } from '../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
+import { PortfolioService } from '../../service/portfolio.service';
 
 @Component({
   selector: 'app-contact-page',
@@ -8,8 +9,22 @@ import { HttpClient } from '@angular/common/http';
   templateUrl: './contact-page.component.html',
   styleUrl: './contact-page.component.scss',
 })
-export class ContactPageComponent {
-  constructor(private cd: ChangeDetectorRef, private http: HttpClient) {} // Inject ChangeDetectorRef
+export class ContactPageComponent implements OnInit {
+  connectMe: {
+    name: string;
+    class: string;
+    action: () => void;
+    color: string;
+    ariaLabel: string;
+  }[] = [];
+  constructor(
+    private cd: ChangeDetectorRef,
+    private http: HttpClient,
+    private portfolioService: PortfolioService
+  ) {} // Inject ChangeDetectorRef
+  ngOnInit() {
+    this.connectMe = this.portfolioService.getConnectMe();
+  }
 
   onInputChange() {
     setTimeout(() => {
@@ -61,31 +76,4 @@ export class ContactPageComponent {
   clearForm(contactForm: any) {
     contactForm.resetForm(); // Properly reset form
   }
-  iconsContact = [
-    {
-      name: 'LinkedIn',
-      class: 'pi pi-linkedin',
-      ariaLabel: 'Open LinkedIn profile',
-      action: () =>
-        window.open(
-          'https://www.linkedin.com/in/fatih-idris-928027268/',
-          '_blank'
-        ),
-      color: 'bg-blue-500/60',
-    },
-    {
-      name: 'WhatsApp',
-      class: 'pi pi-whatsapp',
-      ariaLabel: 'Send a message on WhatsApp',
-      action: () => window.open('https://wa.me/601137873793', '_blank'),
-      color: 'bg-green-500/60',
-    },
-    {
-      name: 'GitHub',
-      class: 'pi pi-github',
-      ariaLabel: 'Open GitHub profile',
-      action: () => window.open('https://github.com/ftihidris', '_blank'),
-      color: 'bg-purple-500/60',
-    },
-  ];
 }

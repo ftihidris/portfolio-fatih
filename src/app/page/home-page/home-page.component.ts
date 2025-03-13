@@ -4,7 +4,7 @@ import {
   Inject,
   OnInit,
   PLATFORM_ID,
-  AfterViewInit, // Import AfterViewInit
+  AfterViewInit,
 } from '@angular/core';
 
 import { isPlatformBrowser } from '@angular/common';
@@ -45,14 +45,6 @@ export class HomePageComponent implements OnInit, AfterViewInit {
     this.portfolioService.getIconsSkill().subscribe((data) => {
       this.iconsSkill = data.sort((a, b) => b.color.localeCompare(a.color)); // Sort by color
     });
-
-    // Only run this code in the browser
-    if (isPlatformBrowser(this.platformId)) {
-      const scrollContainer = document.querySelector('.relative.z-10');
-      if (scrollContainer) {
-        scrollContainer.addEventListener('scroll', () => this.onScroll());
-      }
-    }
   }
 
   ngAfterViewInit() {
@@ -65,11 +57,7 @@ export class HomePageComponent implements OnInit, AfterViewInit {
   @HostListener('window:scroll', ['$event'])
   onScroll() {
     if (isPlatformBrowser(this.platformId)) {
-      const scrollContainer = document.querySelector('.relative.z-10');
-      if (scrollContainer) {
-        const scrollY = scrollContainer.scrollTop;
-        this.rotationAngle = scrollY * 0.5;
-      }
+      this.rotationAngle = window.scrollY * 0.5; // Use window.scrollY
     }
   }
 }

@@ -39,6 +39,7 @@ import { getFirestore } from 'firebase/firestore';
 import { SkeletonModule } from 'primeng/skeleton';
 import { provideHttpClient } from '@angular/common/http';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+import { CarouselModule } from 'ngx-owl-carousel-o';
 
 @NgModule({
   declarations: [
@@ -63,6 +64,7 @@ import { AngularFireAuthModule } from '@angular/fire/compat/auth';
     BrowserAnimationsModule,
     ToggleButtonComponent,
     SkeletonModule,
+    CarouselModule,
 
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,

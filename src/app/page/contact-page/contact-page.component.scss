@@ -56,20 +56,13 @@ textarea:focus {
     -1px 1px 0 rgb(239 68 68), 1px 1px 0 rgb(239 68 68);
 }
 
-// ii. Following the design, move placeholder text up when fields are filled, with a smooth transition.
-.input-group input.ng-dirty ~ label {
-  top: 0;
-  @apply text-sm;
-  @apply text-gray-300;
-}
-
 .textarea-group {
   position: relative;
 }
 
 .textarea-group label {
   position: absolute;
-  top: 30px;
+  top: 24px;
   left: 15px;
   transform: translateY(-50%);
   font-size: 16px;

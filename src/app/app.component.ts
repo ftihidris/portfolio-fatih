@@ -4,10 +4,12 @@ import {
   ElementRef,
   ViewChild,
   Inject,
+  HostListener,
 } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 import { FirebaseService } from './services/firebase.service';
 import { PortfolioService } from './service/portfolio.service';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -17,6 +19,7 @@ import { PortfolioService } from './service/portfolio.service';
 export class AppComponent implements AfterViewInit {
   title = 'portfolio-fatih';
   activeSection: string = '';
+
   @ViewChild('scrollContainer') scrollContainer!: ElementRef;
 
   constructor(
@@ -25,27 +28,18 @@ export class AppComponent implements AfterViewInit {
     private portfolioService: PortfolioService
   ) {}
 
-  // uploadAboutCards() {
-  //   this.portfolioService.vote2uSkill.forEach((card) => {
-  //     this.firebaseService.uploadData('vote2uSkill', card);
-  //   });
-  //   this.portfolioService.vote2uNotes.forEach((card) => {
-  //     this.firebaseService.uploadData('vote2uNotes', card);
-  //   });
-  // }
-
   ngAfterViewInit() {
     setTimeout(() => this.restoreScrollPosition(), 200);
+    window.addEventListener('scroll', this.onScroll.bind(this)); // Attach to window
   }
 
   restoreScrollPosition() {
     const savedScrollPos = sessionStorage.getItem('scrollPos');
-    if (savedScrollPos && this.scrollContainer?.nativeElement) {
-      this.scrollContainer.nativeElement.scrollTop = parseInt(
-        savedScrollPos,
-        10
-      );
-    } else {
+    if (savedScrollPos) {
+      window.scrollTo({
+        top: parseInt(savedScrollPos, 10),
+        behavior: 'smooth',
+      });
     }
 
     const hash = window.location.hash;
@@ -59,17 +53,21 @@ export class AppComponent implements AfterViewInit {
       }
     }
   }
-
+  // uploadAboutCards() {
+  //   this.portfolioService.portfolioSkills.forEach((card) => {
+  //     this.firebaseService.uploadData('portfolioSkills', card);
+  //   });
+  //   this.portfolioService.portfolioNotes.forEach((card) => {
+  //     this.firebaseService.uploadData('portfolioNotes', card);
+  //   });
+  // }
   onScroll() {
-    sessionStorage.setItem(
-      'scrollPos',
-      this.scrollContainer.nativeElement.scrollTop.toString()
-    );
-    this.detectSection(); // Add this line
+    sessionStorage.setItem('scrollPos', window.scrollY.toString());
+    this.detectSection();
   }
 
   detectSection() {
-    const sections = ['home', 'about', 'project', 'contact'];
+    const sections = ['top', 'intro', 'about', 'project', 'contact'];
     let currentSection = '';
 
     for (const section of sections) {

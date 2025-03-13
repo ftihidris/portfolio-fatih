@@ -6,6 +6,9 @@ import { CameliaActiveComponent } from './camelia-active/camelia-active.componen
 import { ProjectPageComponent } from './project-page.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { ToggleButtonComponent } from '../../shared/toggle-button/toggle-button.component';
+import { PortfolioComponent } from './portfolio/portfolio.component';
+import { provideAnimations } from '@angular/platform-browser/animations';
+import { CarouselModule } from 'ngx-owl-carousel-o';
 
 @NgModule({
   declarations: [
@@ -13,10 +16,11 @@ import { ToggleButtonComponent } from '../../shared/toggle-button/toggle-button.
     Vote2uComponent,
     ArtzologyComponent,
     CameliaActiveComponent,
+    PortfolioComponent,
   ],
-  imports: [CommonModule, ToggleButtonComponent],
+  imports: [CommonModule, ToggleButtonComponent, CarouselModule],
   exports: [ProjectPageComponent],
-  providers: [provideAnimationsAsync()],
+  providers: [provideAnimationsAsync(), provideAnimations()],
   bootstrap: [ProjectPageComponent],
 })
 export class ProjectPageModule {}

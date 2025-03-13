@@ -8,9 +8,9 @@
         class="bg-gray-600 shadow-lg border border-gray-500 border-opacity-50 rounded-lg rounded-br-7xl rounded-tl-7xl backdrop-filter backdrop-blur-md bg-opacity-20 p-4 flex justify-center items-center"
       >
         <img
-          src="https://firebasestorage.googleapis.com/v0/b/portfolio-website-6d701.firebasestorage.app/o/logo%2Fcamelia-active.svg?alt=media&token=004f4814-be54-43dd-9469-e07df0fe3400"
+          src="https://firebasestorage.googleapis.com/v0/b/portfolio-website-6d701.firebasestorage.app/o/logo%2Ffatihidris-logo.svg?alt=media&token=63444e1a-6264-4b95-b61f-6f8427417f9a"
           class="w-28 h-28 object-contain m-4"
-          alt="Cameli.active Logo"
+          alt="Fatih Idris Logo"
         />
       </div>
       <div
@@ -21,7 +21,7 @@
           Notes
         </span>
         <div class="grid grid-cols-1 gap-3 w-full">
-          <ng-container *ngFor="let card of cameliaNotes">
+          <ng-container *ngFor="let card of portfolioNotes">
             <div class="relative group w-full justify-start">
               <span
                 [ngClass]="card.color"
@@ -59,7 +59,7 @@
       <img
         *ngFor="let image of images"
         [src]="image.src"
-        alt="Camelia Snapshot"
+        alt="Portfolio Logo"
         [attr.loading]="image.priority ? 'eager' : 'lazy'"
         [attr.fetchpriority]="image.priority ? 'high' : 'low'"
         class="h-full w-full object-cover"
@@ -98,7 +98,7 @@
     <div
       class="flex flex-wrap justify-end gap-3 w-full transition-all duration-500"
     >
-      <ng-container *ngFor="let icon of cameliaSkill">
+      <ng-container *ngFor="let icon of portfolioSkills">
         <div class="relative group">
           <div
             class="absolute -top-11 left-1/2 transform -translate-x-1/2 px-3 py-2 text-xs font-light text-white text-center rounded-lg bg-gray-500/85 opacity-0 transition-opacity duration-300 group-hover:opacity-100 pointer-events-none"
@@ -131,33 +131,32 @@
           View website <br />
         </div>
         <span
-          class="rounded-full bg-orange-500/50 shadow-lg flex justify-center items-center text-white text-xs cursor-pointer px-5 py-1.5 transition duration-300 hover:scale-110 active:opacity-80"
-          onclick="window.open('https://www.tmrnd.com.my/camelia/', '_blank')"
+          class="rounded-full bg-red-500/50 shadow-lg flex justify-center items-center text-white text-xs cursor-pointer px-5 py-1.5 transition duration-300 hover:scale-110 active:opacity-80"
+          onclick="window.open('https://www.sketch.com/s/8f88f102-3fd6-4eea-8ef6-8ef06871ebed', '_blank')"
         >
-          Website
+          Prototype
         </span>
       </div>
     </div>
     <p class="text-left mb-3 text-white">
-      Centralised Access Management and Line Assessment or CAMELIA for short, is
-      a centralised smart analytic system to diagnose network health conditions,
-      detects and locates as well as predicts fault of physical network or
-      service issues for access network.
+      My portfolio website is a visually stunning and modern digital space,
+      inspired by fancy grid layouts, glassmorphism, and a colorful theme. It
+      reflects my creativity, technical expertise, and passion for front-end
+      development, mobile app development, and UI/UX design.
     </p>
     <ul class="list-disc list-outside pl-4 text-white">
       <li class="mb-2">
-        Designed UI/UX prototype using Sketch to enhance user engagement and
-        simplifying navigation.
+        Designed UI/UX prototype using Sketch based on personal brand identity
       </li>
       <li class="mb-2">
         Developed a front-end website using Angular and Tailwind CSS to
         streamline the creation of website components and reduce development
         time.
       </li>
-      <li>
-        Adapted Agile development to ensure efficiency and streamlining project
-        timelines with regular sprints.
+      <li class="mb-2">
+        Integrated with firebase for data retrieval and deployment.
       </li>
+      <li>Created new logo for personal brand inspired by grid layout</li>
     </ul>
   </div>
 </div>

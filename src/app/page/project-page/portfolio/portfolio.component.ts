@@ -1,48 +1,43 @@
-import {
-  Component,
-  ElementRef,
-  OnInit,
-  Renderer2,
-  ViewChild,
-} from '@angular/core';
-import { fadeInAnimation } from '../../../shared/animations';
+import { Component, ElementRef, Renderer2, ViewChild } from '@angular/core';
 import { PortfolioService } from '../../../service/portfolio.service';
 
 @Component({
-  selector: 'app-artzology',
+  selector: 'app-portfolio',
   standalone: false,
-  templateUrl: './artzology.component.html',
-  styleUrl: './artzology.component.scss',
-  animations: [fadeInAnimation],
+  templateUrl: './portfolio.component.html',
+  styleUrl: './portfolio.component.scss',
 })
-export class ArtzologyComponent implements OnInit {
+export class PortfolioComponent {
   @ViewChild('carouselContainer', { static: false })
   carouselContainer!: ElementRef;
+  portfolioNotes: any[] = [];
+  portfolioSkills: any[] = [];
   currentIndex = 0;
-  artzSkill: any[] = [];
-  artzNotes: any[] = [];
-
   images: any[] = [];
+
   constructor(
     private renderer: Renderer2,
     private portfolioService: PortfolioService
   ) {}
 
   ngOnInit() {
-    this.portfolioService.getArtzNotes().subscribe((data) => {
+    this.portfolioService.getPortfolioNotes().subscribe((data) => {
       const colorOrder = [
         'bg-pink-500/50',
         'bg-purple-500/50',
         'bg-orange-500/50',
       ];
-      this.artzNotes = data.sort((a: any, b: any) => {
+
+      this.portfolioNotes = data.sort((a: any, b: any) => {
         return colorOrder.indexOf(a.color) - colorOrder.indexOf(b.color);
       });
     });
-    this.portfolioService.getArtzSkill().subscribe((data) => {
-      this.artzSkill = data.sort((a, b) => a.color.localeCompare(b.color));
+    this.portfolioService.getPortfolioSkills().subscribe((data) => {
+      this.portfolioSkills = data.sort((a, b) =>
+        a.color.localeCompare(b.color)
+      );
     });
-    this.portfolioService.getArtzImages().subscribe((data) => {
+    this.portfolioService.getPorfolioImages().subscribe((data) => {
       if (data.length > 0) {
         const imagesData = data[0];
 
@@ -50,7 +45,8 @@ export class ArtzologyComponent implements OnInit {
         const imageKeys = Object.keys(imagesData)
           .filter(
             (key) =>
-              key.startsWith('artz-') && !isNaN(parseInt(key.split('-')[1]))
+              key.startsWith('portfolio-') &&
+              !isNaN(parseInt(key.split('-')[1]))
           )
           .sort(
             (a, b) => parseInt(a.split('-')[1]) - parseInt(b.split('-')[1])

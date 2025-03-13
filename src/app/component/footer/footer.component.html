@@ -1,5 +1,156 @@
-<div
-  class="relative top-24 md:top-0 bg-gray-600 h-full max-h-16 shadow-lg border-t border-gray-500 border-opacity-50 rounded-lg backdrop-filter backdrop-blur-md bg-opacity-20 flex justify-center items-center"
+<footer
+  class="bg-gray-600 shadow-lg border-t border-gray-500 border-opacity-50 rounded-t-lg backdrop-filter backdrop-blur-md bg-opacity-20"
 >
-  <p class="text-sm">© 2025 Fatih Idris. All rights reserved.</p>
-</div>
+  <div class="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
+    <div
+      class="grid md:grid-cols-3 md:grid-rows-1 md:gap-28 grid-cols-2 auto-rows-auto gap-4"
+    >
+      <div
+        class="mb-6 md:mb-0 cursor-pointer col-span-2 md:col-span-1 row-start-1"
+      >
+        <a href="#top">
+          <img
+            src="assets/logo/fatihidris-logo-2.svg"
+            class="h-6 me-3"
+            alt="Fatih Logo"
+        /></a>
+      </div>
+
+      <div class="row-start-2 md:row-start-1">
+        <h2 class="mb-6 text-sm font-semibold text-gray-300">Pages</h2>
+        <ul class="text-gray-400 text-xs md:text-sm grid grid-cols-2 max-w-52">
+          <li class="mb-4"><a href="#top" class="hover:underline">Top</a></li>
+          <li class="mb-4">
+            <a href="#project" class="hover:underline">Projects</a>
+          </li>
+          <li class="mb-4">
+            <a href="#intro" class="hover:underline">Intro</a>
+          </li>
+          <li class="mb-4">
+            <a href="#contact" class="hover:underline">Contact</a>
+          </li>
+          <li class="mb-4 col-span-2">
+            <a href="#about" class="hover:underline">About</a>a
+          </li>
+        </ul>
+      </div>
+
+      <div class="row-start-2 md:row-start-1 ml-5">
+        <h2 class="mb-6 text-sm font-semibold text-gray-300">Social</h2>
+        <ul class="text-gray-400 text-xs md:text-sm">
+          <li class="mb-4">
+            <a
+              href="https://www.linkedin.com/in/fatih-idris-928027268/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="cursor-pointer hover:underline"
+            >
+              LinkedIn
+            </a>
+          </li>
+          <li class="mb-4">
+            <a
+              href="https://github.com/ftihidris"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="cursor-pointer hover:underline"
+            >
+              GitHub
+            </a>
+          </li>
+          <li class="mb-4">
+            <a
+              href="mailto:fatihidris13@gmail.com"
+              class="cursor-pointer hover:underline"
+              (click)="
+                copyToClipboard('fatihidris13@gmail.com');
+                $event.preventDefault()
+              "
+            >
+              Email
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <hr class="my-6 border-gray-500 sm:mx-auto lg:my-8" />
+    <div class="sm:flex sm:items-center sm:justify-between">
+      <div class="flex mt-4 sm:justify-center sm:mt-0 gap-4">
+        <span class="text-xs md:text-sm text-gray-500 sm:mb-0 mb-4"
+          >Powered by:</span
+        >
+
+        <div *ngFor="let icon of poweredBy" class="relative group">
+          <!-- Tooltip -->
+          <div
+            class="absolute -top-10 left-1/2 transform -translate-x-1/2 px-3 py-2 text-xs font-light text-white bg-gray-600/30 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 dark:bg-gray-500/80"
+          >
+            {{ icon.name }}
+          </div>
+
+          <!-- Clickable Icon Button -->
+          <img [src]="icon.src" [attr.alt]="icon.alt" class="h-5 w-5" />
+        </div>
+      </div>
+
+      <span class="text-xs md:text-sm text-gray-500 sm:text-center"
+        >© 2025 Fatih Idris. All Rights Reserved.
+      </span>
+    </div>
+  </div>
+</footer>
+<!-- 
+<footer
+  class="relative h-full bg-gray-600 shadow-lg border-t border-gray-500 border-opacity-50 rounded-lg backdrop-filter backdrop-blur-md bg-opacity-20 flex justify-center p-5 md:p-4"
+>
+  <div
+    class="w-full max-w-screen-xl flex flex-col md:flex-row justify-between items-center md:m-0 m-2"
+  >
+
+    <div class="flex gap-2 md:gap-4 text-gray-300 text-xs md:text-sm">
+      <span
+        class="cursor-pointer hover:underline"
+        onclick="window.open('https://www.linkedin.com/in/fatih-idris-928027268/', '_blank')"
+        >LinkedIn</span
+      >
+      <span>|</span>
+      <span
+        class="cursor-pointer hover:underline"
+        onclick="window.open('https://github.com/ftihidris', '_blank')"
+        >Github</span
+      >
+      <span>|</span>
+      <span
+        class="cursor-pointer hover:underline"
+        (click)="copyToClipboard('fatihidris13@gmail.com')"
+        >Email</span
+      >
+    </div>
+
+    <div class="flex flex-col items-center justify-center md:m-2 m-7">
+      <span class="text-gray-300 text-xs leading-none"> Powered by: </span>
+      <div class="flex items-center gap-5 mt-2.5 md:mt-3">
+        <div *ngFor="let icon of poweredBy" class="relative group">
+
+          <div
+            class="absolute -top-10 left-1/2 transform -translate-x-1/2 px-3 py-2 text-xs font-light text-white bg-gray-600/30 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 dark:bg-gray-500/80"
+          >
+            {{ icon.name }}
+          </div>
+
+
+          <img
+            [src]="icon.src"
+            [attr.alt]="icon.alt"
+            class="h-6 w-6 md:h-8 md:w-8"
+          />
+        </div>
+      </div>
+    </div>
+
+
+    <span class="text-gray-300 text-xs md:text-sm">
+      © 2025 Fatih Idris. All rights reserved.
+    </span>
+  </div>
+</footer> -->

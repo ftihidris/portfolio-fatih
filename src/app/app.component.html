@@ -1,19 +1,11 @@
-<div
-  class="fixed inset-0 bg-[url('/assets/background-2.webp')] bg-cover bg-center bg-no-repeat"
-></div>
-
-<div
-  #scrollContainer
-  class="relative z-10 overflow-y-auto h-screen"
-  (scroll)="onScroll()"
->
+<div #scrollContainer class="min-dvh relative z-10" (scroll)="onScroll()">
+  <div class="background"></div>
   <app-header [activeSection]="activeSection"></app-header>
   <p-toast></p-toast>
   <!-- <button (click)="uploadAboutCards()">Upload About Cards</button> -->
 
   <app-landing-page id="top"> </app-landing-page>
-  <app-home-page id="home"></app-home-page>
-
+  <app-home-page id="intro"></app-home-page>
   <app-about-page id="about"></app-about-page>
   <app-project-page id="project"></app-project-page>
   <app-contact-page id="contact"></app-contact-page>

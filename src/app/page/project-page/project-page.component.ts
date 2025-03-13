@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
   styleUrl: './project-page.component.scss',
 })
 export class ProjectPageComponent {
-  rows = [['Camelia.active', 'Vote2U', 'Artzology']];
+  rows = [['Camelia.active', 'Portfolio', 'Vote2U', 'Artzology']];
   selectedOption = 'Camelia.active';
 
   ngOnInit(): void {}

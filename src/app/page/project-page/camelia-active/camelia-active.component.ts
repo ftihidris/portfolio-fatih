@@ -15,13 +15,7 @@ export class CameliaActiveComponent {
   cameliaNotes: any[] = [];
   cameliaSkill: any[] = [];
   currentIndex = 0;
-  images = [
-    'https://firebasestorage.googleapis.com/v0/b/portfolio-website-6d701.firebasestorage.app/o/camelia%2Fcamelia-1.webp?alt=media&token=c0e87de5-5861-4e05-a413-46dc17e74555',
-    'https://firebasestorage.googleapis.com/v0/b/portfolio-website-6d701.firebasestorage.app/o/camelia%2Fcamelia-2.webp?alt=media&token=4ffc5b07-9341-4679-b1db-5186632f593d',
-    'https://firebasestorage.googleapis.com/v0/b/portfolio-website-6d701.firebasestorage.app/o/camelia%2Fcamelia-3.webp?alt=media&token=2386c58b-028d-4106-b0c9-e8fdd55f07bd',
-    'https://firebasestorage.googleapis.com/v0/b/portfolio-website-6d701.firebasestorage.app/o/camelia%2Fcamelia-4.webp?alt=media&token=ecb6ab7e-dd4e-4912-accc-78d552a0c090',
-    'https://firebasestorage.googleapis.com/v0/b/portfolio-website-6d701.firebasestorage.app/o/camelia%2Fcamelia-5.webp?alt=media&token=9ef6c574-7488-49d1-b82d-184778e6a58e',
-  ];
+  images: any[] = [];
 
   constructor(
     private renderer: Renderer2,
@@ -29,11 +23,46 @@ export class CameliaActiveComponent {
   ) {}
 
   ngOnInit() {
-    this.portfolioService
-      .getCameliaNotes()
-      .subscribe((data) => (this.cameliaNotes = data));
+    this.portfolioService.getCameliaNotes().subscribe((data) => {
+      const colorOrder = [
+        'bg-pink-500/50',
+        'bg-purple-500/50',
+        'bg-orange-500/50',
+      ];
+
+      this.cameliaNotes = data.sort((a: any, b: any) => {
+        return colorOrder.indexOf(a.color) - colorOrder.indexOf(b.color);
+      });
+    });
     this.portfolioService.getCameliaSkill().subscribe((data) => {
       this.cameliaSkill = data.sort((a, b) => a.color.localeCompare(b.color));
+    });
+    this.portfolioService.getCameliaImages().subscribe((data) => {
+      if (data.length > 0) {
+        const imagesData = data[0];
+
+        // Extract and sort image keys dynamically
+        const imageKeys = Object.keys(imagesData)
+          .filter(
+            (key) =>
+              key.startsWith('camelia-') && !isNaN(parseInt(key.split('-')[1]))
+          )
+          .sort(
+            (a, b) => parseInt(a.split('-')[1]) - parseInt(b.split('-')[1])
+          );
+
+        if (imageKeys.length > 0) {
+          // Load the first image with high priority
+          this.images = [{ src: imagesData[imageKeys[0]], priority: true }];
+
+          // Incrementally load the remaining images
+          imageKeys.slice(1).forEach((key, index) => {
+            setTimeout(() => {
+              this.images.push({ src: imagesData[key], priority: false });
+            }, index * 50); // Staggered loading for smoothness
+          });
+        }
+      }
     });
   }
 

@@ -28,6 +28,13 @@ export class PortfolioService {
     return this.fetchCollection('aboutCards');
   }
 
+  getArtzImages(): Observable<any[]> {
+    return this.fetchCollection('artzologyImages');
+  }
+  getCameliaImages(): Observable<any[]> {
+    return this.fetchCollection('cameliaImages');
+  }
+
   getCertsCards(): Observable<any[]> {
     return this.fetchCollection('certsCards');
   }
@@ -36,6 +43,20 @@ export class PortfolioService {
     return this.iconsContact;
   }
 
+  getConnectMe() {
+    return this.connectMe;
+  }
+
+  getPortfolioNotes(): Observable<any[]> {
+    return this.fetchCollection('portfolioNotes');
+  }
+
+  getPortfolioSkills(): Observable<any[]> {
+    return this.fetchCollection('portfolioSkills');
+  }
+  getPorfolioImages(): Observable<any[]> {
+    return this.fetchCollection('portfolioImages');
+  }
   getCameliaNotes(): Observable<any[]> {
     return this.fetchCollection('cameliaNotes');
   }
@@ -152,87 +173,114 @@ export class PortfolioService {
       color: 'bg-red-500/60',
     },
   ];
+
+  connectMe = [
+    {
+      name: 'LinkedIn',
+      class: 'pi pi-linkedin',
+      ariaLabel: 'Open LinkedIn profile',
+      action: () =>
+        window.open(
+          'https://www.linkedin.com/in/fatih-idris-928027268/',
+          '_blank'
+        ),
+      color: 'bg-blue-500/60',
+    },
+    {
+      name: 'WhatsApp',
+      class: 'pi pi-whatsapp',
+      ariaLabel: 'Send a message on WhatsApp',
+      action: () => window.open('https://wa.me/601137873793', '_blank'),
+      color: 'bg-green-500/60',
+    },
+    {
+      name: 'GitHub',
+      class: 'pi pi-github',
+      ariaLabel: 'Open GitHub profile',
+      action: () => window.open('https://github.com/ftihidris', '_blank'),
+      color: 'bg-purple-500/60',
+    },
+    {
+      name: 'Email',
+      class: 'pi pi-envelope',
+      ariaLabel: 'Send an email',
+      action: () => this.copyToClipboard('fatihidris13@gmail.com'),
+      color: 'bg-red-500/60',
+    },
+  ];
 }
 
-// vote2uNotes = [
-//   {
-//     title: 'Status',
-//     name: 'Student',
-//     color: 'bg-pink-500/50',
-//     cardColor: 'bg-blue-100/60',
-//   },
-//   {
-//     title: 'Roles',
-//     name: 'Full Stack Developer',
-//     color: 'bg-purple-500/50',
-//     cardColor: 'bg-purple-100/60',
-//   },
-//   {
-//     title: 'For',
-//     name: 'Final Year Project',
-//     color: 'bg-orange-500/50',
-//     cardColor: 'bg-orange-100/60',
-//   },
-// ];
+//   portfolioNotes = [
+//     {
+//       title: 'Status',
+//       name: 'Fresh Graduate',
+//       color: 'bg-pink-500/50',
+//       cardColor: 'bg-blue-100/60',
+//     },
+//     {
+//       title: 'Roles',
+//       name: 'Full Stack Developer',
+//       color: 'bg-purple-500/50',
+//       cardColor: 'bg-purple-100/60',
+//     },
+//     {
+//       title: 'For',
+//       name: 'Portfolio',
+//       color: 'bg-orange-500/50',
+//       cardColor: 'bg-orange-100/60',
+//     },
+//   ];
 
-// vote2uSkill = [
-//   {
-//     name: 'Dart',
-//     level: 'Intermediate',
-//     color: 'bg-purple-500/50',
-//   },
-//   {
-//     name: 'Solidity',
-//     level: 'Intermediate',
-//     color: 'bg-purple-500/50',
-//   },
-//   {
-//     name: 'UI/UX Design',
-//     level: 'Beginner',
-//     color: 'bg-purple-500/50',
-//   },
-//   {
-//     name: 'Flutter',
-//     level: 'Intermediate',
-//     color: 'bg-red-500/50',
-//   },
-//   {
-//     name: 'Firebase',
-//     level: 'Intermediate',
-//     color: 'bg-red-500/50',
-//   },
-//   {
-//     name: 'Remix IDE',
-//     level: 'Intermediate',
-//     color: 'bg-red-500/50',
-//   },
-//   {
-//     name: 'Figma',
-//     level: 'Beginner',
-//     color: 'bg-red-500/50',
-//   },
-//   {
-//     name: 'iOS',
-//     level: 'Beginner',
-//     color: 'bg-yellow-500/50',
-//   },
+//   portfolioSkills = [
+//     {
+//       name: 'HTML',
+//       level: 'Intermediate',
+//       color: 'bg-purple-500/50',
+//     },
+//     {
+//       name: 'SCSS',
+//       level: 'Intermediate',
+//       color: 'bg-purple-500/50',
+//     },
+//     {
+//       name: 'TypeScript',
+//       level: 'Beginner',
+//       color: 'bg-purple-500/50',
+//     },
+//     {
+//       name: 'UI/UX Design',
+//       level: 'Intermediate',
+//       color: 'bg-purple-500/50',
+//     },
+//     {
+//       name: 'Angular',
+//       level: 'Intermediate',
+//       color: 'bg-red-500/50',
+//     },
+//     {
+//       name: 'Firebase',
+//       level: 'Intermediate',
+//       color: 'bg-red-500/50',
+//     },
 
-//   {
-//     name: 'Android',
-//     level: 'Intermedia',
-//     color: 'bg-yellow-500/50',
-//   },
-//   {
-//     name: 'Blockchain',
-//     level: 'Intermediate',
-//     color: 'bg-yellow-500/50',
-//   },
-//   {
-//     name: 'Smart Contract',
-//     level: 'Intermediate',
-//     color: 'bg-yellow-500/50',
-//   },
-// ];
+//     {
+//       name: 'Sketch',
+//       level: 'Intermediate',
+//       color: 'bg-red-500/50',
+//     },
+//     {
+//       name: 'Adobe Illustrator',
+//       level: 'Advanced',
+//       color: 'bg-yellow-500/50',
+//     },
+
+//     {
+//       name: 'Web',
+//       level: 'Intermedia',
+//       color: 'bg-yellow-500/50',
+//     },
+//   ];
+// }
 
 // cameliaNotes = [
 //   {

@@ -1,8 +1,10 @@
-<div
-  class="relative top-36 md:top-2/5 min-h-[calc(100vh-4rem)] max-w-screen-xl w-full mx-auto px-4 flex flex-col items-center"
+<section
+  class="relative min-h-dvh max-w-screen-xl w-full mx-auto px-4 flex flex-col items-center"
 >
+  <div class="h-20 w-full"></div>
   <!-- Toggle Buttons Container -->
   <app-toggle-button
+    class="mt-8 mb-6"
     [options]="rows"
     [selectedOption]="selectedOption"
     (selectionChange)="onSelectionChange($event)"
@@ -11,6 +13,9 @@
   <div [ngSwitch]="selectedOption">
     <div *ngSwitchCase="'Camelia.active'">
       <app-camelia-active></app-camelia-active>
+    </div>
+    <div *ngSwitchCase="'Portfolio'">
+      <app-portfolio></app-portfolio>
     </div>
     <div *ngSwitchCase="'Vote2U'">
       <app-vote2u></app-vote2u>
@@ -22,4 +27,4 @@
       <app-camelia-active></app-camelia-active>
     </div>
   </div>
-</div>
+</section>

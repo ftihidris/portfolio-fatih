@@ -1,132 +1,142 @@
-<nav
-  class="fixed shadow-lg w-[calc(100%-2rem)] bg-gray-600 border border-gray-500 border-opacity-50 rounded-lg backdrop-filter backdrop-blur-md bg-opacity-10 z-50 m-4"
+<header
+  class="transition-transform duration-300 ease-in-out"
+  [ngClass]="{ '-translate-y-full ': isHeaderHidden }"
 >
-  <div
-    class="max-w-screen-xl flex items-center justify-between mx-auto py-2 px-4"
+  <nav
+    class="fixed shadow-lg m-4 w-[calc(100%-2rem)] bg-gray-600 border border-gray-500 border-opacity-50 rounded-lg backdrop-filter backdrop-blur-md bg-opacity-10 z-50 transition-transform duration-300"
   >
-    <a href="#top" class="flex items-center space-x-3 rtl:space-x-reverse">
-      <!-- <span class="text-2xl font-semibold whitespace-nowrap text-white">
+    <div
+      class="max-w-screen-xl flex items-center justify-between mx-auto py-1.5 md:py-2 px-4"
+    >
+      <a href="#top" class="flex items-center space-x-3 rtl:space-x-reverse">
+        <!-- <span class="text-2xl font-semibold whitespace-nowrap text-white">
         Fatih Idris
       </span> -->
-      <img
-        src="assets/logo/fatihidris-logo-2.svg"
-        loading="high"
-        alt="Fatih Idris Logo"
-        class="h-[1.5rem] cursor-pointer"
-      />
-    </a>
-
-    <!-- Toggle Button -->
-    <button
-      type="button"
-      class="p-2 w-10 h-10 text-white rounded-lg md:hidden hover:bg-opacity-20 focus:ring-2 focus:ring-gray-200"
-      (click)="toggleSidebar()"
-    >
-      <span class="sr-only">Open main menu</span>
-      <svg
-        class="w-5 h-5"
-        xmlns="http://www.w3.org/2000/svg"
-        fill="none"
-        viewBox="0 0 17 14"
-      >
-        <path
-          stroke="currentColor"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="2"
-          d="M1 1h15M1 7h15M1 13h15"
+        <img
+          src="assets/logo/fatihidris-logo-2.svg"
+          loading="high"
+          alt="Fatih Idris Logo"
+          class="ml-2.5 md:h-[1.5rem] h-[1.3rem] cursor-pointer"
         />
-      </svg>
-    </button>
+      </a>
 
-    <!-- Navbar Menu -->
-    <div class="hidden md:block" id="navbar-default">
-      <ul class="flex flex-row space-x-6 rtl:space-x-reverse">
-        <li>
-          <a
-            href="#home"
-            class="block py-2 px-3 rounded-sm hover:scale-110 text-gray-200 hover:text-white hover:font-semibold active:text-gray-300"
-            [class.text-white]="activeSection === 'home'"
-            [class.font-bold]="activeSection === 'home'"
-            >Home</a
-          >
-        </li>
-        <li>
-          <a
-            href="#about"
-            class="block py-2 px-3 rounded-sm hover:scale-110 text-gray-200 hover:text-white hover:font-semibold active:text-gray-300"
-            [class.text-white]="activeSection === 'about'"
-            [class.font-bold]="activeSection === 'about'"
-            >About</a
-          >
-        </li>
-        <li>
-          <a
-            href="#project"
-            class="block py-2 px-3 rounded-sm hover:scale-110 text-gray-200 hover:text-white hover:font-semibold active:text-gray-300"
-            [class.text-white]="activeSection === 'project'"
-            [class.font-bold]="activeSection === 'project'"
-            >Projects</a
-          >
-        </li>
-        <li>
-          <a
-            href="#contact"
-            class="block py-2 px-3 rounded-sm hover:scale-110 text-gray-200 hover:text-white hover:font-semibold active:text-gray-300"
-            [class.text-white]="activeSection === 'contact'"
-            [class.font-bold]="activeSection === 'contact'"
-            >Contact</a
-          >
-        </li>
-      </ul>
+      <!-- Toggle Button -->
+      <button
+        type="button"
+        class="p-2.5 text-white flex justify-end rounded-lg md:hidden hover:bg-opacity-20"
+        (click)="toggleSidebar()"
+        aria-label="Open navigation menu"
+      >
+        <svg
+          class="w-4 h-4 md:w-5 md:h-5"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 17 14"
+        >
+          <path
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M1 1h15M1 7h15M1 13h15"
+          />
+        </svg>
+      </button>
+
+      <!-- Navbar Menu -->
+      <div class="hidden md:block" id="navbar-default">
+        <ul class="flex flex-row space-x-6 rtl:space-x-reverse">
+          <li>
+            <a
+              href="#intro"
+              class="block py-2 px-3 rounded-sm hover:scale-110 text-gray-200 hover:text-white hover:font-semibold active:text-gray-300"
+              [class.text-white]="activeSection === 'intro'"
+              [class.font-bold]="activeSection === 'intro'"
+              >Intro</a
+            >
+          </li>
+          <li>
+            <a
+              href="#about"
+              class="block py-2 px-3 rounded-sm hover:scale-110 text-gray-200 hover:text-white hover:font-semibold active:text-gray-300"
+              [class.text-white]="activeSection === 'about'"
+              [class.font-bold]="activeSection === 'about'"
+              >About</a
+            >
+          </li>
+          <li>
+            <a
+              href="#project"
+              class="block py-2 px-3 rounded-sm hover:scale-110 text-gray-200 hover:text-white hover:font-semibold active:text-gray-300"
+              [class.text-white]="activeSection === 'project'"
+              [class.font-bold]="activeSection === 'project'"
+              >Projects</a
+            >
+          </li>
+          <li>
+            <a
+              href="#contact"
+              class="block py-2 px-3 rounded-sm hover:scale-110 text-gray-200 hover:text-white hover:font-semibold active:text-gray-300"
+              [class.text-white]="activeSection === 'contact'"
+              [class.font-bold]="activeSection === 'contact'"
+              >Contact</a
+            >
+          </li>
+        </ul>
+      </div>
     </div>
+  </nav>
+
+  <!-- Mobile Sidebar -->
+  <!-- Mobile Sidebar -->
+  <div
+    class="fixed top-24 right-0 w-52 mr-1 mt-1 z-50 md:hidden transition-transform duration-300"
+    [ngClass]="{
+      'translate-x-0 rounded-lg': isSidebarVisible,
+      'translate-x-full': !isSidebarVisible
+    }"
+    (click)="$event.stopPropagation()"
+  >
+    <ul class="flex flex-col p-2">
+      <li>
+        <a
+          href="#intro"
+          class="block py-2 my-1 px-4 rounded-xl hover:scale-110 active:scale-100 text-gray-200 hover:text-white hover:font-semibold active:text-gray-300"
+          (click)="closeSidebar()"
+          >Intro</a
+        >
+      </li>
+      <li>
+        <a
+          href="#about"
+          class="block py-2 my-1 px-4 rounded-xl hover:scale-110 active:scale-100 text-gray-200 hover:text-white hover:font-semibold active:text-gray-300"
+          (click)="closeSidebar()"
+          >About</a
+        >
+      </li>
+      <li>
+        <a
+          href="#project"
+          class="block py-2 my-1 px-4 rounded-xl hover:scale-110 active:scale-100 text-gray-200 hover:text-white hover:font-semibold active:text-gray-300"
+          (click)="closeSidebar()"
+          >Projects</a
+        >
+      </li>
+      <li>
+        <a
+          href="#contact"
+          class="block py-2 my-1 px-4 rounded-xl hover:scale-110 active:scale-100 text-gray-200 hover:text-white hover:font-semibold active:text-gray-300"
+          (click)="closeSidebar()"
+          >Contact</a
+        >
+      </li>
+    </ul>
   </div>
-</nav>
 
-<!-- Mobile Sidebar -->
-<div
-  class="fixed top-24 right-0 w-52 mr-1 mt-1 z-50 md:hidden transition-transform duration-300"
-  [ngClass]="{
-    'translate-x-0 rounded-lg': isSidebarVisible,
-    'translate-x-full': !isSidebarVisible
-  }"
-  (click)="$event.stopPropagation()"
->
-  <ul class="flex flex-col p-2">
-    <li>
-      <a
-        href="#home"
-        class="block py-2 my-1 px-4 rounded-xl hover:scale-110 active:scale-100 text-gray-200 hover:text-white hover:font-semibold active:text-gray-300"
-        >Home</a
-      >
-    </li>
-    <li>
-      <a
-        href="#about"
-        class="block py-2 my-1 px-4 rounded-xl hover:scale-110 active:scale-100 text-gray-200 hover:text-white hover:font-semibold active:text-gray-300"
-        >About</a
-      >
-    </li>
-    <li>
-      <a
-        href="#project"
-        class="block py-2 my-1 px-4 rounded-xl hover:scale-110 active:scale-100 text-gray-200 hover:text-white hover:font-semibold active:text-gray-300"
-        >Projects</a
-      >
-    </li>
-    <li>
-      <a
-        href="#contact"
-        class="block py-2 my-1 px-4 rounded-xl hover:scale-110 active:scale-100 text-gray-200 hover:text-white hover:font-semibold active:text-gray-300"
-        >Contact</a
-      >
-    </li>
-  </ul>
-</div>
-
-<!-- Sidebar Overlay -->
-<div
-  class="fixed inset-0 backdrop-filter backdrop-blur-sm bg-opacity-10 z-40 block md:hidden"
-  *ngIf="isSidebarVisible"
-  (click)="closeSidebar()"
-></div>
+  <!-- Sidebar Overlay -->
+  <div
+    class="fixed inset-0 backdrop-filter backdrop-blur-sm bg-opacity-10 z-40 block md:hidden"
+    *ngIf="isSidebarVisible"
+    (click)="closeSidebar()"
+  ></div>
+</header>

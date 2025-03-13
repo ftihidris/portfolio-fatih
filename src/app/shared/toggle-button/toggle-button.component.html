@@ -1,4 +1,4 @@
-<div class="flex flex-wrap justify-center gap-3 w-full mt-10 mb-6">
+<div class="flex flex-wrap justify-center gap-3 w-full">
   <div
     *ngFor="let row of options; let i = index"
     class="flex mb-3 shadow-lg bg-gray-600 border border-gray-500 border-opacity-50 rounded-full backdrop-filter backdrop-blur-md bg-opacity-10"
@@ -7,11 +7,11 @@
     <button
       *ngFor="let option of row"
       aria-label="Toggle Button"
-      class="flex-1 toggle-button px-4 py-2 my-1 mx-1 text-center text-sm transition-all hover:shadow-lg hover:text-gray-300 hover:rounded-full active:opacity-75 active:rounded-full disabled:pointer-events-none disabled:opacity-50"
+      class="flex-1 toggle-button px-4 py-2 my-1 mx-1 text-center text-xs sm:text-sm duration-300 transition-all hover:shadow-lg hover:text-gray-300 hover:rounded-full active:opacity-75 active:rounded-full disabled:pointer-events-none disabled:opacity-50"
       [ngClass]="{
         'bg-gray-500/30 text-white shadow-md rounded-full hover:cursor-pointer':
           selectedOption === option,
-        'text-gray-400/70 hover:text-gray-400 hover:cursor-pointer hover:bg-gray-600/20':
+        'text-gray-400/70 hover:text-gray-400 hover:cursor-pointer block hover:bg-gray-600/20 truncate sm:whitespace-normal sm:overflow-visible sm:text-ellipsis max-w-[85px] sm:max-w-none ':
           selectedOption !== option
       }"
       (click)="toggleSelection(option)"

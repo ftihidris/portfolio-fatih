@@ -58,10 +58,11 @@
     >
       <img
         *ngFor="let image of images"
-        [src]="image"
+        [src]="image.src"
+        alt="Artzology Photos"
+        [attr.loading]="image.priority ? 'eager' : 'lazy'"
+        [attr.fetchpriority]="image.priority ? 'high' : 'low'"
         class="h-full w-full object-cover"
-        loading="lazy"
-        alt="Camelia"
       />
     </div>
     <button
@@ -106,7 +107,7 @@
           </div>
           <span
             [ngClass]="icon.color"
-            class="rounded-full shadow-lg flex justify-center items-center text-white text-sm cursor-pointer px-5 py-1.5 transition duration-300 hover:scale-110 active:opacity-80"
+            class="rounded-full shadow-lg flex justify-center items-center text-white md:text-sm text-xs cursor-pointer px-5 py-1.5 transition duration-300 hover:scale-110 active:opacity-80"
           >
             {{ icon.name }}
           </span>
@@ -130,7 +131,7 @@
           Visit IG <br />
         </div>
         <span
-          class="rounded-full bg-orange-500/50 shadow-lg flex justify-center items-center text-white text-xs cursor-pointer px-5 py-1.5 transition duration-300 hover:scale-110 active:opacity-80"
+          class="rounded-full bg-purple-500/50 shadow-lg flex justify-center items-center text-white text-xs cursor-pointer px-5 py-1.5 transition duration-300 hover:scale-110 active:opacity-80"
           onclick="window.open('https://www.instagram.com/artzology_?igsh=MTF5Y3dwMDgwNGducQ==', '_blank')"
         >
           Instagram
@@ -138,7 +139,7 @@
       </div>
     </div>
     <p class="text-left mb-3"></p>
-    <ul class="list-disc list-outside pl-4">
+    <ul class="list-disc list-outside pl-4 text-white">
       <li class="mb-2">
         Designed and consulted my client for the University Edition Jersey
         Campaign. Started with the design draft for jersey line up for 6 top
