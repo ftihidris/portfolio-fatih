@@ -88,7 +88,6 @@
   </nav>
 
   <!-- Mobile Sidebar -->
-  <!-- Mobile Sidebar -->
   <div
     class="fixed top-24 right-0 w-52 mr-1 mt-1 z-50 md:hidden transition-transform duration-300"
     [ngClass]="{
@@ -102,7 +101,7 @@
         <a
           href="#intro"
           class="block py-2 my-1 px-4 rounded-xl hover:scale-110 active:scale-100 text-gray-200 hover:text-white hover:font-semibold active:text-gray-300"
-          (click)="closeSidebar()"
+          (click)="onSectionClick($event)"
           >Intro</a
         >
       </li>
@@ -110,7 +109,7 @@
         <a
           href="#about"
           class="block py-2 my-1 px-4 rounded-xl hover:scale-110 active:scale-100 text-gray-200 hover:text-white hover:font-semibold active:text-gray-300"
-          (click)="closeSidebar()"
+          (click)="onSectionClick($event)"
           >About</a
         >
       </li>
@@ -118,7 +117,7 @@
         <a
           href="#project"
           class="block py-2 my-1 px-4 rounded-xl hover:scale-110 active:scale-100 text-gray-200 hover:text-white hover:font-semibold active:text-gray-300"
-          (click)="closeSidebar()"
+          (click)="onSectionClick($event)"
           >Projects</a
         >
       </li>
@@ -126,7 +125,7 @@
         <a
           href="#contact"
           class="block py-2 my-1 px-4 rounded-xl hover:scale-110 active:scale-100 text-gray-200 hover:text-white hover:font-semibold active:text-gray-300"
-          (click)="closeSidebar()"
+          (click)="onSectionClick($event)"
           >Contact</a
         >
       </li>
@@ -135,7 +134,7 @@
 
   <!-- Sidebar Overlay -->
   <div
-    class="fixed inset-0 backdrop-filter backdrop-blur-sm bg-opacity-10 z-40 block md:hidden"
+    class="fixed inset-0 backdrop-filter backdrop-blur-sm bg-opacity-30 bg-black z-40 block md:hidden"
     *ngIf="isSidebarVisible"
     (click)="closeSidebar()"
   ></div>

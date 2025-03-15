@@ -19,7 +19,7 @@ export const staggerAnimationss = [
     transition(':enter', [
       style({ opacity: 0, transform: 'translateY(100px)' }),
       animate(
-        '700ms ease-out',
+        '500ms ease-out',
         style({ opacity: 1, transform: 'translateY(0)' })
       ),
     ]),

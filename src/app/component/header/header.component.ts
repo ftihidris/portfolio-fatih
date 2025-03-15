@@ -23,6 +23,10 @@ export class HeaderComponent {
   onScroll(): void {
     const currentScrollY = window.scrollY;
 
+    if (this.isSidebarVisible) {
+      return; // Ignore scroll behavior if sidebar is open
+    }
+
     if (window.innerWidth <= 768) {
       // Apply only for mobile view
       this.isHeaderHidden =
@@ -32,6 +36,11 @@ export class HeaderComponent {
     }
 
     this.lastScrollY = currentScrollY;
+  }
+
+  onSectionClick(event: Event): void {
+    event.stopPropagation(); // Prevent sidebar from closing
+    this.setBodyScrollLock(false); // Ensure scrolling is enabled
   }
 
   toggleSidebar(): void {
@@ -45,7 +54,11 @@ export class HeaderComponent {
   }
 
   private setBodyScrollLock(lock: boolean): void {
-    document.body.style.overflow = lock ? 'hidden' : 'auto';
+    if (lock) {
+      document.body.style.overflow = 'hidden';
+    } else if (!this.isSidebarVisible) {
+      document.body.style.overflow = 'auto'; // Only unlock when sidebar is actually closed
+    }
   }
 
   ngOnDestroy(): void {

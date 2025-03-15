@@ -6,31 +6,7 @@
     <base href="/" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <script>
-      function updateFavicon() {
-        const isDarkMode =
-          window.matchMedia &&
-          window.matchMedia("(prefers-color-scheme: dark)").matches;
-        const favicon = document.querySelector("link[rel='icon']");
-        if (!favicon) {
-          const newFavicon = document.createElement("link");
-          newFavicon.rel = "icon";
-          newFavicon.type = "image/x-icon";
-          document.head.appendChild(newFavicon);
-        }
-        document.querySelector("link[rel='icon']").href = isDarkMode
-          ? "fatih-dark.ico"
-          : "fatih-light.ico";
-      }
-
-      // Run on load
-      updateFavicon();
-
-      // Listen for theme changes
-      window
-        .matchMedia("(prefers-color-scheme: dark)")
-        .addEventListener("change", updateFavicon);
-    </script>
+    <link rel="icon" type="image/x-icon" href="fatih.ico" />
     <meta
       name="description"
       content="Fatih Idris - Mobile & Web Developer. Explore my portfolio, skills, and projects. Get in touch!"

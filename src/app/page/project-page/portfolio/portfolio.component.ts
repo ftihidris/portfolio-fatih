@@ -1,11 +1,13 @@
 import { Component, ElementRef, Renderer2, ViewChild } from '@angular/core';
 import { PortfolioService } from '../../../service/portfolio.service';
+import { fadeInAnimation } from '../../../shared/animations';
 
 @Component({
   selector: 'app-portfolio',
   standalone: false,
   templateUrl: './portfolio.component.html',
   styleUrl: './portfolio.component.scss',
+  animations: [fadeInAnimation],
 })
 export class PortfolioComponent {
   @ViewChild('carouselContainer', { static: false })
