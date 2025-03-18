@@ -1,10 +1,4 @@
-import {
-  Component,
-  ElementRef,
-  HostListener,
-  Input,
-  ViewChild,
-} from '@angular/core';
+import { Component, HostListener, Input } from '@angular/core';
 
 @Component({
   selector: 'app-header',
@@ -38,6 +32,14 @@ export class HeaderComponent {
     this.lastScrollY = currentScrollY;
   }
 
+  @HostListener('window:resize', [])
+  onResize(): void {
+    if (window.innerWidth > 768 && this.isSidebarVisible) {
+      this.isSidebarVisible = false;
+      this.setBodyScrollLock(false);
+    }
+  }
+
   onSectionClick(event: Event): void {
     event.stopPropagation(); // Prevent sidebar from closing
     this.setBodyScrollLock(false); // Ensure scrolling is enabled
@@ -56,8 +58,8 @@ export class HeaderComponent {
   private setBodyScrollLock(lock: boolean): void {
     if (lock) {
       document.body.style.overflow = 'hidden';
-    } else if (!this.isSidebarVisible) {
-      document.body.style.overflow = 'auto'; // Only unlock when sidebar is actually closed
+    } else {
+      document.body.style.overflow = 'auto';
     }
   }
 

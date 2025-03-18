@@ -48,7 +48,7 @@ export const fadeInAnimation = trigger('fadeInAnimation', [
   transition('* => *', [
     style({ opacity: 0, transform: 'translateY(20px)' }),
     animate(
-      '500ms ease-in-out',
+      '700ms ease-in-out',
       style({ opacity: 1, transform: 'translateY(0)' })
     ),
   ]),
