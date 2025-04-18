@@ -40,6 +40,7 @@ import { SkeletonModule } from 'primeng/skeleton';
 import { provideHttpClient } from '@angular/common/http';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { CarouselModule } from 'ngx-owl-carousel-o';
+import { ArtworkPageComponent } from './page/artwork-page/artwork-page.component';
 
 @NgModule({
   declarations: [
@@ -49,6 +50,7 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
     HeaderComponent,
     FooterComponent,
     LandingPageComponent,
+    ArtworkPageComponent,
   ],
 
   imports: [

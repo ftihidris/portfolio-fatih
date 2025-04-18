@@ -1,7 +1,7 @@
 <div class="flex flex-wrap justify-center gap-3 w-full">
   <div
     *ngFor="let row of options; let i = index"
-    class="flex mb-3 shadow-lg bg-gray-600 border border-gray-500 border-opacity-50 rounded-full backdrop-filter backdrop-blur-md bg-opacity-10"
+    class="flex mb-3 shadow-lg bg-gray-700 border border-gray-500 border-opacity-50 rounded-full backdrop-filter backdrop-blur-md bg-opacity-25"
     [attr.data-group]="'row-' + (i + 1)"
   >
     <button
@@ -11,7 +11,7 @@
       [ngClass]="{
         'bg-gray-500/30 text-white shadow-md rounded-full hover:cursor-pointer ':
           selectedOption === option,
-        'text-gray-400/70 hover:text-gray-400 hover:cursor-pointer block  hover:bg-gray-600/20 transition duration-300 ease-in-out truncate sm:whitespace-normal sm:overflow-visible sm:text-ellipsis max-w-[85px] sm:max-w-none ':
+        'text-gray-400/70 hover:text-gray-400 hover:cursor-pointer block  hover:bg-gray-700/20 transition duration-300 ease-in-out truncate sm:whitespace-normal sm:overflow-visible sm:text-ellipsis max-w-[85px] sm:max-w-none ':
           selectedOption !== option
       }"
       (click)="toggleSelection(option)"

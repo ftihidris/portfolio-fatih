@@ -36,7 +36,7 @@
           <!-- First Text -->
           <div
             @staggerElements
-            class="bg-gray-600 whitespace-nowrap px-4 py-2 text-gray-300 text-sm text-center shadow-lg border border-gray-500 border-opacity-50 rounded-full backdrop-filter backdrop-blur-sm bg-opacity-20 transition-all duration-300 pointer-events-none"
+            class="bg-gray-700 whitespace-nowrap px-4 py-2 text-gray-300 text-sm text-center shadow-lg border border-gray-500 border-opacity-50 rounded-full backdrop-filter backdrop-blur-sm bg-opacity-20 transition-all duration-300 pointer-events-none"
             [ngClass]="{
               'opacity-0 invisible scale-90':
                 hoverState === 'group1' || hoverState === 'group2',
@@ -44,13 +44,13 @@
                 hoverState !== 'group1' && hoverState !== 'group2'
             }"
           >
-            <span>Take a look at this grid</span>
+            <span>Check out at this grid</span>
           </div>
 
           <!-- Second Text (Now also appears when hoverState is 'group2') -->
           <div
             @staggerElements
-            class="absolute bg-gray-600 whitespace-nowrap px-4 py-2 text-gray-300 text-sm text-center shadow-lg border border-gray-500 border-opacity-50 rounded-full backdrop-filter backdrop-blur-sm bg-opacity-20 transition-all duration-300 pointer-events-none"
+            class="absolute bg-gray-700 whitespace-nowrap px-4 py-2 text-gray-300 text-sm text-center shadow-lg border border-gray-500 border-opacity-50 rounded-full backdrop-filter backdrop-blur-sm bg-opacity-20 transition-all duration-300 pointer-events-none"
             [ngClass]="{
               'opacity-100 visible scale-100':
                 hoverState === 'group1' || hoverState === 'group2',
@@ -63,38 +63,38 @@
         </div>
         <div
           @staggerElements
-          class="h-full row-span-3 shadow-lg border border-gray-500 border-opacity-50 rounded-2xl rounded-tl-7xl backdrop-filter backdrop-blur-md bg-opacity-20 p-4 transition duration-300 cursor-pointer"
+          class="h-full row-span-3 shadow-lg border border-gray-500 border-opacity-50 rounded-2xl rounded-tl-7xl backdrop-filter backdrop-blur-md bg-opacity-25 p-4 transition duration-300 cursor-pointer"
           [ngClass]="{
             'bg-red-700 ': hoverState === 'group1',
-            'bg-gray-600': hoverState !== 'group1'
+            'bg-gray-700': hoverState !== 'group1'
           }"
           (mouseover)="setHoverState('group1')"
           (mouseleave)="resetHoverState()"
         ></div>
         <div
           @staggerElements
-          class="shadow-lg border border-gray-500 border-opacity-50 rounded-2xl backdrop-filter backdrop-blur-md bg-opacity-20 p-4 aspect-square transition duration-300"
+          class="shadow-lg border border-gray-500 border-opacity-50 rounded-2xl backdrop-filter backdrop-blur-md bg-opacity-25 p-4 aspect-square transition duration-300"
           [ngClass]="{
             'bg-red-700 ': hoverState === 'group1' || hoverState === 'group2',
-            'bg-gray-600': hoverState === 'none'
+            'bg-gray-700': hoverState === 'none'
           }"
         ></div>
         <div
           @staggerElements
-          class="shadow-lg border border-gray-500 border-opacity-50 rounded-2xl backdrop-filter backdrop-blur-md bg-opacity-20 p-4 aspect-square transition duration-300 cursor-pointer"
+          class="shadow-lg border border-gray-500 border-opacity-50 rounded-2xl backdrop-filter backdrop-blur-md bg-opacity-25 p-4 aspect-square transition duration-300 cursor-pointer"
           [ngClass]="{
             'bg-red-500 ': hoverState === 'group1' || hoverState === 'group2',
-            'bg-gray-600': hoverState === 'none'
+            'bg-gray-700': hoverState === 'none'
           }"
           (mouseover)="setHoverState('group2')"
           (mouseleave)="resetHoverState()"
         ></div>
         <div
           @staggerElements
-          class="shadow-lg border border-gray-500 border-opacity-50 rounded-2xl rounded-br-7xl backdrop-filter backdrop-blur-md bg-opacity-20 p-4 aspect-square transition duration-300 cursor-pointer"
+          class="shadow-lg border border-gray-500 border-opacity-50 rounded-2xl rounded-br-7xl backdrop-filter backdrop-blur-md bg-opacity-25 p-4 aspect-square transition duration-300 cursor-pointer"
           [ngClass]="{
             'bg-red-300 ': hoverState === 'group2',
-            'bg-gray-600': hoverState !== 'group2'
+            'bg-gray-700': hoverState !== 'group2'
           }"
           (mouseover)="setHoverState('group2')"
           (mouseleave)="resetHoverState()"

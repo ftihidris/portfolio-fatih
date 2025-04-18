@@ -8,7 +8,7 @@
     >
       <div>
         <div
-          class="w-full bg-gray-600 border rounded-lg border-gray-500 border-opacity-50 backdrop-filter backdrop-blur-md bg-opacity-20 p-4"
+          class="w-full bg-gray-700 border rounded-lg border-gray-500 border-opacity-50 backdrop-filter backdrop-blur-md bg-opacity-25 p-4"
         >
           <span class="block text-gray-200 text-lg mb-4 text-left leading-none">
             Connect with Me
@@ -19,7 +19,7 @@
             <div *ngFor="let icon of connectMe" class="relative group">
               <!-- Tooltip -->
               <div
-                class="absolute -top-11 left-1/2 transform -translate-x-1/2 px-3 py-2 text-xs font-light text-white bg-gray-600/30 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 dark:bg-gray-500/80"
+                class="absolute -top-11 left-1/2 transform -translate-x-1/2 px-3 py-2 text-xs font-light text-white bg-gray-700/30 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 dark:bg-gray-500/80"
               >
                 {{ icon.name }}
               </div>
@@ -40,7 +40,7 @@
         </div>
       </div>
       <div
-        class="md:col-span-2 w-full h-full bg-gray-600 border p-4 rounded-lg border-gray-500 border-opacity-50 backdrop-filter backdrop-blur-md bg-opacity-20"
+        class="md:col-span-2 w-full h-full bg-gray-700 border p-4 rounded-lg border-gray-500 border-opacity-50 backdrop-filter backdrop-blur-md bg-opacity-25"
       >
         <span class="block text-gray-200 text-lg mb-4 text-left leading-none">
           Get in Touch
@@ -66,7 +66,7 @@
                 aria-describedby="nameHelp"
                 autocomplete="name"
                 (input)="onInputChange()"
-                class="h-full w-full bg-gray-600/30 border p-3 rounded-lg border-gray-500 border-opacity-50"
+                class="h-full w-full bg-gray-700/30 border p-3 rounded-lg border-gray-500 border-opacity-50"
               />
               <label for="name">Name</label>
             </div>
@@ -82,7 +82,7 @@
                 (input)="onInputChange()"
                 #email="ngModel"
                 aria-describedby="emailHelp"
-                class="h-full w-full bg-gray-600/30 border p-3 rounded-lg border-gray-500 border-opacity-50"
+                class="h-full w-full bg-gray-700/30 border p-3 rounded-lg border-gray-500 border-opacity-50"
               />
               <label for="email">Email address</label>
             </div>
@@ -98,7 +98,7 @@
                 autocomplete="tel"
                 (input)="onInputChange()"
                 aria-describedby="contactHelp"
-                class="h-full w-full bg-gray-600/30 border p-3 rounded-lg border-gray-500 border-opacity-50"
+                class="h-full w-full bg-gray-700/30 border p-3 rounded-lg border-gray-500 border-opacity-50"
               />
 
               <label for="tel">Contact no.</label>
@@ -113,7 +113,7 @@
                 #message="ngModel"
                 autocomplete="off"
                 aria-describedby="messageHelp"
-                class="h-full w-full bg-gray-600/30 border p-3 rounded-lg border-gray-500 border-opacity-50"
+                class="h-full w-full bg-gray-700/30 border p-3 rounded-lg border-gray-500 border-opacity-50"
               ></textarea>
               <label for="message">How can I help?</label>
             </div>
