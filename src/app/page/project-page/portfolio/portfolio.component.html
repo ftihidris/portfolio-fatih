@@ -48,44 +48,11 @@
   </div>
 
   <div
+    #carouselSection
     @fadeInAnimation
     class="overflow-hidden col-span-1 md:col-span-2 row-span-2 md:col-start-2 md:row-start-1 bg-gray-700 shadow-lg border border-gray-500 border-opacity-50 rounded-lg rounded-bl-7xl backdrop-filter backdrop-blur-md bg-opacity-25"
   >
-    <div
-      #carouselContainer
-      aria-describedby="More snapshots"
-      class="relative flex w-full h-full transition-transform duration-300 ease-in-out"
-    >
-      <img
-        *ngFor="let image of images"
-        [src]="image.src"
-        alt="Portfolio Logo"
-        [attr.loading]="image.priority ? 'eager' : 'lazy'"
-        [attr.fetchpriority]="image.priority ? 'high' : 'low'"
-        class="h-full w-full object-cover"
-      />
-    </div>
-    <button
-      (click)="moveSlide(-1)"
-      class="absolute top-1/2 left-4 transform -translate-y-1/2 text-gray-500/70 py-2 px-4 rounded-full hover:bg-gray-400/30 transition-transform duration-300 ease-in-out"
-    >
-      &#10094;
-    </button>
-    <button
-      (click)="moveSlide(1)"
-      class="absolute top-1/2 right-4 transform -translate-y-1/2 text-gray-500/70 py-2 px-4 rounded-full hover:bg-gray-400/30 transition-transform duration-300 ease-in-out"
-    >
-      &#10095;
-    </button>
-    <div
-      class="absolute bottom-3 left-1/2 transform -translate-x-1/2 flex gap-2"
-    >
-      <span
-        *ngFor="let image of images; let i = index"
-        class="w-2 h-2 rounded-full"
-        [ngClass]="i === currentIndex ? 'bg-gray-100/70' : 'bg-gray-500/50 '"
-      ></span>
-    </div>
+    <app-carousel [images]="images"></app-carousel>
   </div>
 
   <div

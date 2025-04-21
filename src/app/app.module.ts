@@ -41,6 +41,7 @@ import { provideHttpClient } from '@angular/common/http';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { ArtworkPageComponent } from './page/artwork-page/artwork-page.component';
+import { CarouselComponent } from './shared/carousel/carousel.component';
 
 @NgModule({
   declarations: [

@@ -9,6 +9,7 @@ import { ToggleButtonComponent } from '../../shared/toggle-button/toggle-button.
 import { PortfolioComponent } from './portfolio/portfolio.component';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { CarouselModule } from 'ngx-owl-carousel-o';
+import { CarouselComponent } from '../../shared/carousel/carousel.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,12 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
     CameliaActiveComponent,
     PortfolioComponent,
   ],
-  imports: [CommonModule, ToggleButtonComponent, CarouselModule],
+  imports: [
+    CommonModule,
+    ToggleButtonComponent,
+    CarouselModule,
+    CarouselComponent,
+  ],
   exports: [ProjectPageComponent],
   providers: [provideAnimationsAsync(), provideAnimations()],
   bootstrap: [ProjectPageComponent],

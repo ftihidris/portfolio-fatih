@@ -1,4 +1,4 @@
-import { Component, ElementRef, Renderer2, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { fadeInAnimation } from '../../../shared/animations';
 import { PortfolioService } from '../../../service/portfolio.service';
 
@@ -6,21 +6,15 @@ import { PortfolioService } from '../../../service/portfolio.service';
   selector: 'app-camelia-active',
   standalone: false,
   templateUrl: './camelia-active.component.html',
-  styleUrl: './camelia-active.component.scss',
+  styleUrls: ['./camelia-active.component.scss'],
   animations: [fadeInAnimation],
 })
-export class CameliaActiveComponent {
-  @ViewChild('carouselContainer', { static: false })
-  carouselContainer!: ElementRef;
+export class CameliaActiveComponent implements OnInit {
   cameliaNotes: any[] = [];
   cameliaSkill: any[] = [];
-  currentIndex = 0;
   images: any[] = [];
 
-  constructor(
-    private renderer: Renderer2,
-    private portfolioService: PortfolioService
-  ) {}
+  constructor(private portfolioService: PortfolioService) {}
 
   ngOnInit() {
     this.portfolioService.getCameliaNotes().subscribe((data) => {
@@ -29,14 +23,15 @@ export class CameliaActiveComponent {
         'bg-purple-500/50',
         'bg-orange-500/50',
       ];
-
-      this.cameliaNotes = data.sort((a: any, b: any) => {
-        return colorOrder.indexOf(a.color) - colorOrder.indexOf(b.color);
-      });
+      this.cameliaNotes = data.sort(
+        (a, b) => colorOrder.indexOf(a.color) - colorOrder.indexOf(b.color)
+      );
     });
+
     this.portfolioService.getCameliaSkill().subscribe((data) => {
       this.cameliaSkill = data.sort((a, b) => a.color.localeCompare(b.color));
     });
+
     this.portfolioService.getCameliaImages().subscribe((data) => {
       if (data.length > 0) {
         const imagesData = data[0];
@@ -54,25 +49,14 @@ export class CameliaActiveComponent {
         if (imageKeys.length > 0) {
           // Load the first image with high priority
           this.images = [{ src: imagesData[imageKeys[0]], priority: true }];
-
           // Incrementally load the remaining images
           imageKeys.slice(1).forEach((key, index) => {
             setTimeout(() => {
               this.images.push({ src: imagesData[key], priority: false });
-            }, index * 50); // Staggered loading for smoothness
+            }, index * 50); // Adjust the delay as needed
           });
         }
       }
     });
-  }
-
-  moveSlide(step: number) {
-    this.currentIndex =
-      (this.currentIndex + step + this.images.length) % this.images.length;
-    this.renderer.setStyle(
-      this.carouselContainer.nativeElement,
-      'transform',
-      `translateX(-${this.currentIndex * 100}%)`
-    );
   }
 }

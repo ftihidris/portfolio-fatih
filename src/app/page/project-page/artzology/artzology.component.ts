@@ -1,10 +1,4 @@
-import {
-  Component,
-  ElementRef,
-  OnInit,
-  Renderer2,
-  ViewChild,
-} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { fadeInAnimation } from '../../../shared/animations';
 import { PortfolioService } from '../../../service/portfolio.service';
 
@@ -16,17 +10,10 @@ import { PortfolioService } from '../../../service/portfolio.service';
   animations: [fadeInAnimation],
 })
 export class ArtzologyComponent implements OnInit {
-  @ViewChild('carouselContainer', { static: false })
-  carouselContainer!: ElementRef;
-  currentIndex = 0;
   artzSkill: any[] = [];
   artzNotes: any[] = [];
-
   images: any[] = [];
-  constructor(
-    private renderer: Renderer2,
-    private portfolioService: PortfolioService
-  ) {}
+  constructor(private portfolioService: PortfolioService) {}
 
   ngOnInit() {
     this.portfolioService.getArtzNotes().subscribe((data) => {
@@ -69,15 +56,5 @@ export class ArtzologyComponent implements OnInit {
         }
       }
     });
-  }
-
-  moveSlide(step: number) {
-    this.currentIndex =
-      (this.currentIndex + step + this.images.length) % this.images.length;
-    this.renderer.setStyle(
-      this.carouselContainer.nativeElement,
-      'transform',
-      `translateX(-${this.currentIndex * 100}%)`
-    );
   }
 }

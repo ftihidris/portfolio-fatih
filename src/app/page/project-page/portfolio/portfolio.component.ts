@@ -1,4 +1,4 @@
-import { Component, ElementRef, Renderer2, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { PortfolioService } from '../../../service/portfolio.service';
 import { fadeInAnimation } from '../../../shared/animations';
 
@@ -9,18 +9,12 @@ import { fadeInAnimation } from '../../../shared/animations';
   styleUrl: './portfolio.component.scss',
   animations: [fadeInAnimation],
 })
-export class PortfolioComponent {
-  @ViewChild('carouselContainer', { static: false })
-  carouselContainer!: ElementRef;
+export class PortfolioComponent implements OnInit {
   portfolioNotes: any[] = [];
   portfolioSkills: any[] = [];
-  currentIndex = 0;
   images: any[] = [];
 
-  constructor(
-    private renderer: Renderer2,
-    private portfolioService: PortfolioService
-  ) {}
+  constructor(private portfolioService: PortfolioService) {}
 
   ngOnInit() {
     this.portfolioService.getPortfolioNotes().subscribe((data) => {
@@ -67,15 +61,5 @@ export class PortfolioComponent {
         }
       }
     });
-  }
-
-  moveSlide(step: number) {
-    this.currentIndex =
-      (this.currentIndex + step + this.images.length) % this.images.length;
-    this.renderer.setStyle(
-      this.carouselContainer.nativeElement,
-      'transform',
-      `translateX(-${this.currentIndex * 100}%)`
-    );
   }
 }
