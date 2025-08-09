@@ -1,5 +1,11 @@
 import { inject, Injectable, NgZone } from '@angular/core';
-import { Firestore, collection, collectionData } from '@angular/fire/firestore';
+import {
+  Firestore,
+  collection,
+  collectionData,
+  orderBy,
+  query,
+} from '@angular/fire/firestore';
 import { map, Observable } from 'rxjs';
 import { MessageService } from 'primeng/api';
 import { HttpClient } from '@angular/common/http';
@@ -25,7 +31,9 @@ export class PortfolioService {
     );
   }
   getAboutCards(): Observable<any[]> {
-    return this.fetchCollection('aboutCards');
+    const colRef = collection(this.firestore, 'aboutCards');
+    const q = query(colRef, orderBy('priority', 'asc'));
+    return collectionData(q, { idField: 'id' });
   }
 
   getArtzImages(): Observable<any[]> {
